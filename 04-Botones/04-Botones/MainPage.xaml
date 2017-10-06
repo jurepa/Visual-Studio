@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="_04_Botones.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_04_Botones"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Border BorderBrush="Black" BorderThickness="3" MaxWidth="300" CornerRadius="10">
+        <StackPanel x:Name="stkBotones" Background="Chocolate" BorderBrush="Black" Padding="30">
+            <StackPanel Name="BarraSuperior" Orientation="Horizontal">
+                <AppBarButton Icon="AddFriend" Label="Añadir amigo"/>
+                <AppBarButton Icon="Audio" Label="Música"/>
+                <AppBarButton Icon="Calendar" Label="Calendar"/>
+            </StackPanel>
+            <Button Name="boton1" Padding="49 20" Content="Boton 1" HorizontalAlignment="Center" Background="Blue" VerticalAlignment="Center" FontFamily="Verdana" FontSize="16" FontWeight="Bold" BorderBrush="Yellow"/>
+            <Button>
+                <Button.Padding>20 10 </Button.Padding>
+                <Button.HorizontalAlignment>
+                    <HorizontalAlignment>Center</HorizontalAlignment>
+                </Button.HorizontalAlignment>
+                <Button.VerticalAlignment>
+                    <VerticalAlignment>Center</VerticalAlignment>
+                </Button.VerticalAlignment>
+                
+                <Button.Background>
+                    <Brush>Blue</Brush>
+                </Button.Background>
+                <Button.FontFamily>
+                    <FontFamily>Verdana</FontFamily>
+                </Button.FontFamily>
+                <Button.FontSize>
+                    <x:Double>16</x:Double>
+                </Button.FontSize>
+                <Button.FontWeight>
+                    <FontWeight>Bold</FontWeight>
+                </Button.FontWeight>
+                <Button.BorderBrush>
+                    <Brush>Yellow</Brush>
+                </Button.BorderBrush>
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8FB;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" Padding="19"/>
+                        <TextBlock Text="Boton 2" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+
+        </StackPanel>
+    </Border>
+</Page>

@@ -1,0 +1,1 @@
+C:\Users\pjarana\source\repos\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid.csproj;x86
