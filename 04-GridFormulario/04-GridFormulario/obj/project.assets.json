@@ -24331,20 +24331,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\pjarana\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\04-GridFormulario.csproj",
+      "projectUniqueName": "C:\\Users\\pjarana\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\04-GridFormulario.csproj",
       "projectName": "04-GridFormulario",
-      "projectPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\04-GridFormulario.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\obj\\",
+      "projectPath": "C:\\Users\\pjarana\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\04-GridFormulario.csproj",
+      "packagesPath": "C:\\Users\\pjarana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pjarana\\Desktop\\GitHub\\Visual-Studio\\04-GridFormulario\\04-GridFormulario\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pjarana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

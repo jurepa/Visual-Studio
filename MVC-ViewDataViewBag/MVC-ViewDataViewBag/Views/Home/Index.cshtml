@@ -1,0 +1,15 @@
+﻿@model MVC_ViewDataViewBag.Models.Persona
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>@ViewData["Saludo"]</p>
+<p>@ViewBag.Fecha</p>
+<h2>Tus Datos <b>CRACK</b></h2>
+<li>ID: @Model.idPersona</li>
+<li>Nombre: @Model.nombre</li>
+<li>Apellidos: @Model.apellidos</li>
+<li>Dirección: @Model.direccion</li>
+<li>Teléfono: @Model.telefono</li>
+<li>Fecha de Nacimiento: @Model.fechaNac.Date</li>
