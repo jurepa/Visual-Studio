@@ -132,15 +132,27 @@ namespace _04_GridFormulario._4_GridFormulario_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
-            _typeNameTable[0] = "_04_GridFormulario.MainPage";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable = new string[9];
+            _typeNameTable[0] = "_04_GridFormulario.Models.Persona";
+            _typeNameTable[1] = "Object";
+            _typeNameTable[2] = "Int32";
+            _typeNameTable[3] = "String";
+            _typeNameTable[4] = "System.Nullable`1<System.DateTime>";
+            _typeNameTable[5] = "System.ValueType";
+            _typeNameTable[6] = "_04_GridFormulario.MainPage";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[8] = "Windows.UI.Xaml.Controls.UserControl";
 
-            _typeTable = new global::System.Type[3];
-            _typeTable[0] = typeof(global::_04_GridFormulario.MainPage);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable = new global::System.Type[9];
+            _typeTable[0] = typeof(global::_04_GridFormulario.Models.Persona);
+            _typeTable[1] = typeof(global::System.Object);
+            _typeTable[2] = typeof(global::System.Int32);
+            _typeTable[3] = typeof(global::System.String);
+            _typeTable[4] = typeof(global::System.Nullable<global::System.DateTime>);
+            _typeTable[5] = typeof(global::System.ValueType);
+            _typeTable[6] = typeof(global::_04_GridFormulario.MainPage);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -175,7 +187,8 @@ namespace _04_GridFormulario._4_GridFormulario_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::_04_GridFormulario.MainPage(); }
+        private object Activate_0_Persona() { return new global::_04_GridFormulario.Models.Persona(); }
+        private object Activate_6_MainPage() { return new global::_04_GridFormulario.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -187,18 +200,54 @@ namespace _04_GridFormulario._4_GridFormulario_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  _04_GridFormulario.MainPage
-                userType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+            case 0:   //  _04_GridFormulario.Models.Persona
+                userType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_0_Persona;
+                userType.AddMemberName("idPersona");
+                userType.AddMemberName("nombre");
+                userType.AddMemberName("apellidos");
+                userType.AddMemberName("fechaNac");
+                userType.AddMemberName("direccion");
+                userType.AddMemberName("telefono");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.Page
+            case 1:   //  Object
                 xamlType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  Windows.UI.Xaml.Controls.UserControl
+            case 2:   //  Int32
+                xamlType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 3:   //  String
+                xamlType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 4:   //  System.Nullable`1<System.DateTime>
+                userType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 5:   //  System.ValueType
+                userType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 6:   //  _04_GridFormulario.MainPage
+                userType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_6_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -206,11 +255,111 @@ namespace _04_GridFormulario._4_GridFormulario_XamlTypeInfo
         }
 
 
+        private object get_0_Persona_idPersona(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.idPersona;
+        }
+        private void set_0_Persona_idPersona(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.idPersona = (global::System.Int32)Value;
+        }
+        private object get_1_Persona_nombre(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.nombre;
+        }
+        private void set_1_Persona_nombre(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.nombre = (global::System.String)Value;
+        }
+        private object get_2_Persona_apellidos(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.apellidos;
+        }
+        private void set_2_Persona_apellidos(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.apellidos = (global::System.String)Value;
+        }
+        private object get_3_Persona_fechaNac(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.fechaNac;
+        }
+        private void set_3_Persona_fechaNac(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.fechaNac = (global::System.Nullable<global::System.DateTime>)Value;
+        }
+        private object get_4_Persona_direccion(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.direccion;
+        }
+        private void set_4_Persona_direccion(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.direccion = (global::System.String)Value;
+        }
+        private object get_5_Persona_telefono(object instance)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            return that.telefono;
+        }
+        private void set_5_Persona_telefono(object instance, object Value)
+        {
+            var that = (global::_04_GridFormulario.Models.Persona)instance;
+            that.telefono = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "_04_GridFormulario.Models.Persona.idPersona":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "idPersona", "Int32");
+                xamlMember.Getter = get_0_Persona_idPersona;
+                xamlMember.Setter = set_0_Persona_idPersona;
+                break;
+            case "_04_GridFormulario.Models.Persona.nombre":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "nombre", "String");
+                xamlMember.Getter = get_1_Persona_nombre;
+                xamlMember.Setter = set_1_Persona_nombre;
+                break;
+            case "_04_GridFormulario.Models.Persona.apellidos":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "apellidos", "String");
+                xamlMember.Getter = get_2_Persona_apellidos;
+                xamlMember.Setter = set_2_Persona_apellidos;
+                break;
+            case "_04_GridFormulario.Models.Persona.fechaNac":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "fechaNac", "System.Nullable`1<System.DateTime>");
+                xamlMember.Getter = get_3_Persona_fechaNac;
+                xamlMember.Setter = set_3_Persona_fechaNac;
+                break;
+            case "_04_GridFormulario.Models.Persona.direccion":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "direccion", "String");
+                xamlMember.Getter = get_4_Persona_direccion;
+                xamlMember.Setter = set_4_Persona_direccion;
+                break;
+            case "_04_GridFormulario.Models.Persona.telefono":
+                userType = (global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlUserType)GetXamlTypeByName("_04_GridFormulario.Models.Persona");
+                xamlMember = new global::_04_GridFormulario._4_GridFormulario_XamlTypeInfo.XamlMember(this, "telefono", "String");
+                xamlMember.Getter = get_5_Persona_telefono;
+                xamlMember.Setter = set_5_Persona_telefono;
+                break;
+            }
             return xamlMember;
         }
     }

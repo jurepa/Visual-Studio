@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="EjercicioFinalLayouts.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EjercicioFinalLayouts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ScrollViewer >
+        <RelativePanel Background="White">
+            <Border BorderBrush="Black" Name="borde1" BorderThickness="5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="50" Margin="20">
+                <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+            </Border>
+            <Border BorderBrush="Black" Name="borde2" BorderThickness="5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="borde1" Height="100" Margin="20 10 20 20">
+                <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+            </Border>
+            <Border BorderBrush="Black" Name="borde3" BorderThickness="5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="borde2" Height="700" Margin="20 10 20 20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <VariableSizedWrapGrid Orientation="Horizontal">
+                        <Rectangle Fill="Aqua" Height="150" Width="200"/>
+                        <Rectangle Fill="Brown"/>
+                        <Rectangle Fill="DarkOrange"/>
+                    </VariableSizedWrapGrid>
+                    <RelativePanel Grid.Column="1">
+                        <Border BorderBrush="Black" Name="borde1grande" BorderThickness="5" Height="100"  Margin="10 10 10 10"   >
+                            <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="5" Height="100" Name="borde2grande" RelativePanel.Below="borde1grande"  Margin="10 10 10 10" >
+                            <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="5" Height="100" Name="borde3grande" RelativePanel.Below="borde2grande" Margin="10 10 10 10" >
+                            <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="5" Height="100"  Margin="10 10 10 10"  RelativePanel.Below="borde3grande"  >
+                            <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+                        </Border>
+                    </RelativePanel>
+                </Grid>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="borde3" Margin="20 10 20 10" Height="70">
+                <TextBlock Text="HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" TextAlignment="Center" TextWrapping="Wrap"/>
+            </Border>
+        </RelativePanel>
+    </ScrollViewer>
+</Page>
