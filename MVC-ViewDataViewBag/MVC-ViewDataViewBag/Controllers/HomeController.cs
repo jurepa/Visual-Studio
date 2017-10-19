@@ -14,7 +14,7 @@ namespace MVC_ViewDataViewBag.Controllers
         {
             Persona persona = new Persona();
             DateTime fNacimiento = new DateTime(1998, 3, 19, 21, 0, 0);
-            /*if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour <= 12)
+            if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour <= 12)
             {
                 ViewData["Saludo"] = "Buenos dias";
             }
@@ -25,8 +25,8 @@ namespace MVC_ViewDataViewBag.Controllers
             else
             {
                 ViewData["Saludo"] = "Buenas noches";
-            }*/
-            if (fNacimiento.Hour >= 5 && fNacimiento.Hour <= 12)
+            }
+            /*if (fNacimiento.Hour >= 5 && fNacimiento.Hour <= 12)
             {
                 ViewData["Saludo"] = "Buenos dias";
             }
@@ -38,7 +38,7 @@ namespace MVC_ViewDataViewBag.Controllers
             {
                 ViewData["Saludo"] = "Buenas noches";
                 
-            }
+            }*/
             ViewBag.Fecha = DateTime.Now.ToLongDateString();
            
             persona.idPersona = 1;
