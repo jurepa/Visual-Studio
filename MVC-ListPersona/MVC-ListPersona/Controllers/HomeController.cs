@@ -9,13 +9,19 @@ namespace MVC_ListPersona.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        /// <summary>
+        /// Devolverá la vista Index al ejecutar la app
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
-
+        /// <summary>
+        /// Nos devolverá la vista del listado de personas al pulsar el link
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ListadoPersonas()
         {
             ListPersona listado = new ListPersona();
