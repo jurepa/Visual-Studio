@@ -5,30 +5,49 @@
     xmlns:local="using:_05_Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps">
+    <ScrollViewer HorizontalScrollMode="Enabled">
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" MinHeight="100" MinWidth="100">
+                <AutoSuggestBox  Foreground="Aqua" Background="Chocolate" Visibility="Visible"  TextChanged="AutoSuggestBox_TextChanged" Name="autosuggest" PlaceholderText="Buscar..."  QueryIcon="Find" Margin="100"/>
+            </StackPanel>
 
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <AutoSuggestBox  Foreground="Aqua" Background="Chocolate" Visibility="Visible"  TextChanged="AutoSuggestBox_TextChanged" Name="autosuggest" PlaceholderText="Buscar..."  QueryIcon="Find" Margin="100"/>
-        </StackPanel>
-        
-        <MediaPlayerElement  x:Name="video"
+            <MediaPlayerElement  x:Name="video"
                     Source="ms-appx:///Videos/Pablo.mp4"                            
                      AutoPlay="True" AreTransportControlsEnabled="True" Margin="0 30 0 0"/>
-        
-        
 
-    </Grid>
+            <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
+                <DatePicker  Margin="80" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TimePicker Margin="0 30 0 0" MinHeight="100" MinWidth="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <Maps:MapControl
+                    x:Name="MapControl1"            
+                    ZoomInteractionMode="GestureAndControl"
+                    TiltInteractionMode="GestureAndControl"   
+                    MapServiceToken="Chavalator3000"
+                    Grid.Column="2" Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"/>
+            <InkCanvas x:Name="Canvas" Grid.Column="3" Grid.Row="0">
+            </InkCanvas>
+            <InkToolbar TargetInkCanvas="{x:Bind Canvas}" Grid.Column="1" Grid.Row="3"/>
+            <Slider Grid.Column="0" Grid.Row="1" Name="Slider" ValueChanged="Slider_ValueChanged"/>
+            <WebView Source="https://www.youtube.com/" Grid.Column="1" Grid.Row="1"/>
+            <ToggleSwitch Name="toggle" IsOn="True" Header="Modo tonto" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ProgressRing Name="anillo" IsActive="{x:Bind toggle.IsOn, Mode=OneWay}" Grid.Column="3" Width="80" Height="80" Margin="0 130 0 0" />
+            <ProgressBar Name="barra" Grid.Column="0" Grid.Row="3" Foreground="Chocolate" ShowError="{x:Bind toggle.IsOn, Mode=OneWay}"/>
+        </Grid>
+    </ScrollViewer>
 </Page>

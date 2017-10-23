@@ -57,5 +57,17 @@ namespace _05_Controls
             resultado = sugerencias.Where(x => x.Contains(texto)).ToArray();
             return resultado;
         }
+
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            MediaPlayerElement media = this.video;
+            Slider slider = this.Slider;
+
+            if (slider != null)
+            {
+                media.MediaPlayer.Volume = slider.Value;
+            }
+        }
+
     }
 }
