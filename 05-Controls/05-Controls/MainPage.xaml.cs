@@ -26,6 +26,7 @@ namespace _05_Controls
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
         /// <summary>
         /// Detecta cuando cambia el tecto del autosuggestbox
@@ -33,7 +34,7 @@ namespace _05_Controls
         /// <param name="sender"></param>
         /// <param name="args"></param>
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
+        {   
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
                 if (sender.Text.Length > 1)

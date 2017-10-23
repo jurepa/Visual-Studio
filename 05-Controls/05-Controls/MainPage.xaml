@@ -47,7 +47,8 @@
             <WebView Source="https://www.youtube.com/" Grid.Column="1" Grid.Row="1"/>
             <ToggleSwitch Name="toggle" IsOn="True" Header="Modo tonto" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <ProgressRing Name="anillo" IsActive="{x:Bind toggle.IsOn, Mode=OneWay}" Grid.Column="3" Width="80" Height="80" Margin="0 130 0 0" />
-            <ProgressBar Name="barra" Grid.Column="0" Grid.Row="3" Foreground="Chocolate" ShowError="{x:Bind toggle.IsOn, Mode=OneWay}"/>
+            <ProgressBar Name="barra" Grid.Column="0" Grid.Row="3" Foreground="Chocolate"/>
+            <Slider Name="duracionVideo" Grid.Column="0" Grid.Row="1" Margin="0 70 0 0"/>
         </Grid>
     </ScrollViewer>
 </Page>
