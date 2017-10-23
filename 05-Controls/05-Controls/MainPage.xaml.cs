@@ -26,7 +26,10 @@ namespace _05_Controls
         public MainPage()
         {
             this.InitializeComponent();
-            
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
         /// <summary>
         /// Detecta cuando cambia el tecto del autosuggestbox
@@ -58,15 +61,13 @@ namespace _05_Controls
             resultado = sugerencias.Where(x => x.Contains(texto)).ToArray();
             return resultado;
         }
-
-        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        private void timer_Tick(object sender, object e)
         {
-            MediaPlayerElement media = this.video;
-            Slider slider = this.Slider;
-
-            if (slider != null)
+            if (video.Source != null && video.MediaPlayer.PlaybackSession.NaturalDuration.Seconds>0)
             {
-                media.MediaPlayer.Volume = slider.Value;
+                barra.Minimum = 0;
+                barra.Maximum = video.MediaPlayer.PlaybackSession.NaturalDuration.TotalSeconds;
+                barra.Value = video.MediaPlayer.PlaybackSession.Position.TotalSeconds;
             }
         }
 

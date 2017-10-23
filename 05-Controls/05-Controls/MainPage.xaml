@@ -43,11 +43,11 @@
             <InkCanvas x:Name="Canvas" Grid.Column="3" Grid.Row="0">
             </InkCanvas>
             <InkToolbar TargetInkCanvas="{x:Bind Canvas}" Grid.Column="1" Grid.Row="3"/>
-            <Slider Grid.Column="0" Grid.Row="1" Name="Slider" ValueChanged="Slider_ValueChanged"/>
+            <Slider Grid.Column="0" Grid.Row="1" Name="Slider" Minimum="0" Maximum="100" Value="{Binding Mode=TwoWay, ElementName=mediaobject, Path=Volume}"/>
             <WebView Source="https://www.youtube.com/" Grid.Column="1" Grid.Row="1"/>
             <ToggleSwitch Name="toggle" IsOn="True" Header="Modo tonto" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <ProgressRing Name="anillo" IsActive="{x:Bind toggle.IsOn, Mode=OneWay}" Grid.Column="3" Width="80" Height="80" Margin="0 130 0 0" />
-            <ProgressBar Name="barra" Grid.Column="0" Grid.Row="3" Foreground="Chocolate"/>
+            <ProgressBar Name="barra" Grid.Column="0" Grid.Row="3" Foreground="Chocolate" Maximum="{x:Bind video.MediaPlayer.NaturalDuration.TotalSeconds}" />
             <Slider Name="duracionVideo" Grid.Column="0" Grid.Row="1" Margin="0 70 0 0"/>
         </Grid>
     </ScrollViewer>
