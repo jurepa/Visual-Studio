@@ -1,0 +1,25 @@
+﻿@model PasarDatosAlControlador.Models.Persona
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PersonaModificada</title>
+</head>
+<body>
+    <div>
+        <ol>
+            <li>ID: @Model.idPersona</li>
+            <li>Nombre: @Model.nombre</li>
+            <li>Apellidos: @Model.apellidos</li>
+            <li>Direccion: @Model.direccion</li>
+            <li>Teléfono: @Model.telefono</li>
+            <li>Fecha Nacimiento: @Model.fechaNac</li>
+        </ol>
+    </div>
+</body>
+</html>

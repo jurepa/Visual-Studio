@@ -1,0 +1,32 @@
+﻿@model PasarDatosAlControlador.Models.Persona
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <div>
+        <h2>Tus datos: </h2><br/>
+        <form method="post" action="/Home/PersonaModificada">
+            ID: <input type="number" name="idPersona" value=@Model.idPersona /> <br/>
+            <br />
+            Nombre: <input type="text" name="nombre" value=@Model.nombre /><br/>
+            <br />
+            Apellidos: @Html.TextBox("apellidos",Model.apellidos)<br/>
+            <br />
+            Direccion: @Html.TextBoxFor(Model => Model.direccion, new {value=Model.direccion})<br/>
+            <br />
+            Telefono: <input type="text" name="telefono" value=@Model.telefono /> <br/>
+            <br />
+            Fecha Nacimiento: <input type="text" name="fechaNac" value=@Model.fechaNac /><br/>
+            <br /><input type="submit" name="Enviar" value="Enviar"/>
+        </form>
+    </div>
+</body>
+</html>
