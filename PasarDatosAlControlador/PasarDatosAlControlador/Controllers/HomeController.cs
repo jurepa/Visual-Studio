@@ -1,4 +1,6 @@
 ﻿using PasarDatosAlControlador.Models;
+using PasarDatosAlControlador.Models.Lists;
+using PasarDatosAlControlador.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +14,13 @@ namespace PasarDatosAlControlador.Controllers
         // GET: Home
         public ActionResult Editar()
         {
-            Persona persona = new Persona();
-            persona.idPersona = 1;
-            persona.nombre = "Pablo";
-            persona.apellidos = "Jaranator-3000 Alpha 2.0";
-            persona.telefono = "no je ni lo k e un tlfono hulio";
-            persona.direccion = "Mi casa";
-            persona.fechaNac = new DateTime(1998,03,19);
-            return View(persona);
+            PersonaListDepartamento pld = new PersonaListDepartamento();
+            return View(pld);
         }
         [HttpPost]
-        public ActionResult PersonaModificada(Persona persona)
+        public ActionResult PersonaModificada(PersonaListDepartamento pld)
         {
-            return View(persona);
+            return View(pld); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
         }
     }
 }

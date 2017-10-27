@@ -13,6 +13,7 @@ namespace PasarDatosAlControlador.Models
         public DateTime fechaNac { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
+        public int idDepartamento { get; set; }
     }
 
 }
