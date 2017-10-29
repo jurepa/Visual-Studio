@@ -23,6 +23,19 @@ namespace PasarDatosAlControlador.Models.ViewModels
             base.telefono = "No tengo";
             lista = new ListDepartamento();
         }
+        public string getNombreDepartamentoPorId(int d)
+        {
+            string nombreDep = null;
+            foreach (var departamento in lista.lista)
+            {
+                if (departamento.idDepartamento==this.idDepartamento)
+                {
+                    nombreDep = departamento.nombre;
+                }
+
+            }
+            return nombreDep;
+        }
         //[Display(Name = "Departamentos")]
         //public int SelectedDepartamentoId { get; set; }
 

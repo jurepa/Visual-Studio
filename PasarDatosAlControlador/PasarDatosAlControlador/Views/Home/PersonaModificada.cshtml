@@ -1,4 +1,4 @@
-﻿@model PasarDatosAlControlador.Models.ViewModels.PersonaListDepartamento
+﻿@model PasarDatosAlControlador.Models.ViewModels.PersonaConNombreDepartamento
 @{
     Layout = null;
 }
@@ -19,14 +19,7 @@
             <li>Direccion: @Model.direccion</li>
             <li>Teléfono: @Model.telefono</li>
             <li>Fecha Nacimiento: @Model.fechaNac</li>
-            <li>Departamento: 
-            @foreach (var @departamento in Model.lista.lista)
-            {
-                if (@departamento.idDepartamento == Model.idDepartamento)
-                {
-                    @departamento.nombre
-                }
-            }
+            <li>Departamento: @Model.nombreDepartamento
             </li>
         </ol>
     </div>

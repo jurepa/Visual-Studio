@@ -102,6 +102,7 @@
     <Compile Include="Models\Entities\Persona.cs" />
     <Compile Include="Models\Lists\ListDepartamento.cs" />
     <Compile Include="Models\Lists\ListPersona.cs" />
+    <Compile Include="Models\ViewModels\PersonaConNombreDepartamento.cs" />
     <Compile Include="Models\ViewModels\PersonaListDepartamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
