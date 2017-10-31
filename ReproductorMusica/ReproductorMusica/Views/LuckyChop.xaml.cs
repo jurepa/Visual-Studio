@@ -33,12 +33,21 @@ namespace ReproductorMusica.Views
             string header;
             if (pivotItem != null)
             {
-                header = pivotItem.Content.ToString();
+                header = pivotItem.Header.ToString();
+                if (this.reproductor.CurrentState == MediaElementState.Playing)
+                {
+                    this.reproductor.Stop();
+                }
                 switch (header)
                 {
                     case "Behroozi":
-
-                        this.reproductor.MediaPlayer.SetUriSource( new Uri(String.Format("ms-appx:///Assets/Music/behroozi.mp3", UriKind.Absolute)));
+                        this.reproductor.Source = new Uri("ms-appx:///Assets/Music/behroozi.mp3");
+                        break;
+                    case "For Connie":
+                        this.reproductor.Source=new Uri("ms-appx:///Assets/Music/forConnie.mp3");
+                        break;
+                    case "Hello (Adelle)":
+                        this.reproductor.Source = new Uri("ms-appx:///Assets/Music/hello.mp3");
                         break;
                 }
             }

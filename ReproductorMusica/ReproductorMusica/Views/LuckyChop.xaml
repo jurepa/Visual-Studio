@@ -10,12 +10,19 @@
         <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Pivot Name="pivot" SelectionChanged="pivot_SelectionChanged" LeftHeader="Canciones" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50" >
                 <PivotItem Header="Behroozi">
-                    <StackPanel Orientation="Vertical">
-                        <Image Name="foto1" Source="ms-appx:///Assets/Images/rluckychops.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
-                    </StackPanel>
+                    <Image Name="foto1" Source="ms-appx:///Assets/Images/rluckychops.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="For Connie">
+                    <Image Name="foto2" Source="ms-appx:///Assets/Images/rsz_darobehroozi.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="Hello (Adelle)">
+                    <Image Name="foto3" Source="ms-appx:///Assets/Images/rsz_1adelle.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="Hodoo at Sunrise">
+                    <Image Name="foto4" Source="ms-appx:///Assets/Images/rsz_1adelle.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
                 </PivotItem>
             </Pivot>
-            <MediaPlayerElement Name="reproductor" RelativePanel.Below="pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
+            <MediaElement Width="400" AutoPlay="True" Height="100" Name="reproductor" RelativePanel.Below="pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
         </RelativePanel>
     </ScrollViewer>
 </Page>

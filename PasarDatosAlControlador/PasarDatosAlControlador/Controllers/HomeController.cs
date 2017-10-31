@@ -12,11 +12,23 @@ namespace PasarDatosAlControlador.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        /// <summary>
+        /// Se ejecutará al ejecutar la aplicación, devolvemos a la vista la clase PersonaListDepartamento,
+        /// la cual hereda de persona(contiene datos de una persona) y un List<Departamento>
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Editar()
         {
             PersonaListDepartamento pld = new PersonaListDepartamento();
             return View(pld);
         }
+        /// <summary>
+        /// Se ejecutará al darle al botón enviar, recibiremos los datos de la persona, modificados o no.
+        /// Lo adaptamos a la clase PersonaConNombreDepartamento(hereda de persona y ya no tiene List<Departamento>) 
+        /// y devolvemos la view PersonaModificada con el objeto de la clase PersonaConNombreDepartamento  
+        /// </summary>
+        /// <param name="pld"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult PersonaModificada(PersonaListDepartamento pld)
         {

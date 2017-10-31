@@ -8,10 +8,16 @@ using System.Web.Mvc;
 
 namespace PasarDatosAlControlador.Models.ViewModels
 {
+    /// <summary>
+    /// VM que contiene los datos de una persona y un listado departamento
+    /// </summary>
     public class PersonaListDepartamento:Persona
     {
-        public ListDepartamento lista { get; set; }
 
+        public ListDepartamento lista { get; set; }
+        /// <summary>
+        /// Constructor Vacío, le damos valores a los atributos y creamos el list.
+        /// </summary>
         public PersonaListDepartamento()
         {
             base.idPersona = 1;
@@ -23,6 +29,11 @@ namespace PasarDatosAlControlador.Models.ViewModels
             base.telefono = "No tengo";
             lista = new ListDepartamento();
         }
+        /// <summary>
+        /// Método que devuelve el nombre del departamento dependiendo del id.
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public string getNombreDepartamentoPorId(int d)
         {
             string nombreDep = null;

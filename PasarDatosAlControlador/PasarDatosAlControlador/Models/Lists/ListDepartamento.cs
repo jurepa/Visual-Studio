@@ -5,10 +5,15 @@ using System.Linq;
 using System.Web;
 
 namespace PasarDatosAlControlador.Models.Lists
-{
+{   /// <summary>
+/// Clase ListDepartamento, la cual es una lista de departamentos
+/// </summary>
     public class ListDepartamento
     {
         public List<Departamento> lista { get; set; }
+        /// <summary>
+        /// Constructor vacío. Cargamos la lista de departamentos, del tirón
+        /// </summary>
         public ListDepartamento()
         {
             Departamento d1 = new Departamento(1,"Alergología");
@@ -23,6 +28,10 @@ namespace PasarDatosAlControlador.Models.Lists
             lista.Add(d4);
             lista.Add(d5);
         }
+        /// <summary>
+        /// Métodos chorra
+        /// </summary>
+        /// <param name="p"></param>
         public void addDepartamento(Departamento p)
         {
             lista.Add(p);
@@ -35,14 +44,21 @@ namespace PasarDatosAlControlador.Models.Lists
         {
             return lista.Count;
         }
+        /// <summary>
+        /// Devuelve un objeto Departamento dependiendo el id pasado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Departamento getDepartamentoPorId(int id)
         {
             Departamento d=null;
-            for (int i = 1; i <= lista.Count(); i++)
+            bool encontrado = false;
+            for (int i = 1; i <= lista.Count()&&encontrado==false; i++)
             {
                 if (i == lista.ElementAt(i).idDepartamento)
                 {
                     d = lista.ElementAt(i);
+                    encontrado = true;
                 }
             }
             return d;

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace PasarDatosAlControlador.Models
 {
+    /// <summary>
+    /// Clase Persona, con idDepartamento
+    /// </summary>
     public class Persona
     {
         public int idPersona { get; set; }
