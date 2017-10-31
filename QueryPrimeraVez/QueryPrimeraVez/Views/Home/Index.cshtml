@@ -12,7 +12,7 @@
 <body>
     <div>
         <p>@ViewData["primeraVez"] </p>
-        @Html.ActionLink("Recargar", "Index", "Home",new { miPrimeraVez = ViewData["esMiPrimeraVez"] } ,null)
+        @Html.ActionLink("Recargar", "Index", "Home",new { miPrimeraVez = false } ,null)
     </div>
 </body>
 </html>

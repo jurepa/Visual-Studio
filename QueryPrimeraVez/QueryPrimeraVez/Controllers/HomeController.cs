@@ -14,13 +14,10 @@ namespace QueryPrimeraVez.Controllers
             if (miPrimeraVez == false)
             {
                 ViewData["primeraVez"] = "Ya no es tu primera vez";
-                ViewData["esMiPrimeraVez"] = miPrimeraVez;
             }
             else
             {
                 ViewData["primeraVez"] = "Es tu primera vez";
-                miPrimeraVez = false;
-                ViewData["esMiPrimeraVez"] = miPrimeraVez;
             }
             return View();
         }
