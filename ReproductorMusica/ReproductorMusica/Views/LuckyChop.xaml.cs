@@ -26,5 +26,22 @@ namespace ReproductorMusica.Views
         {
             this.InitializeComponent();
         }
+
+        private void pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PivotItem pivotItem = this.pivot.SelectedItem as PivotItem;
+            string header;
+            if (pivotItem != null)
+            {
+                header = pivotItem.Content.ToString();
+                switch (header)
+                {
+                    case "Behroozi":
+
+                        this.reproductor.MediaPlayer.SetUriSource( new Uri(String.Format("ms-appx:///Assets/Music/behroozi.mp3", UriKind.Absolute)));
+                        break;
+                }
+            }
+        }
     }
 }

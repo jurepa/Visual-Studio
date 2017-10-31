@@ -8,14 +8,14 @@
     mc:Ignorable="d">
     <ScrollViewer>
         <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Pivot LeftHeader="Canciones" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50" >
+            <Pivot Name="pivot" SelectionChanged="pivot_SelectionChanged" LeftHeader="Canciones" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50" >
                 <PivotItem Header="Behroozi">
                     <StackPanel Orientation="Vertical">
-                        <Image Name="foto1" Source="\Assets\Images\rluckychops.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
-                        <MediaPlayerElement Name="behroozi" RelativePanel.Below="foto1" RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
+                        <Image Name="foto1" Source="ms-appx:///Assets/Images/rluckychops.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
                     </StackPanel>
                 </PivotItem>
             </Pivot>
+            <MediaPlayerElement Name="reproductor" RelativePanel.Below="pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
         </RelativePanel>
     </ScrollViewer>
 </Page>

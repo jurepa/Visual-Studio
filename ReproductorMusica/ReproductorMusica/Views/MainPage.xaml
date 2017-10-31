@@ -9,13 +9,13 @@
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="SPOTIFY SHUNGO" FontSize="60" FontFamily="MV Boli" Name="titulo" RelativePanel.AlignHorizontalCenterWithPanel="True" TextWrapping="Wrap" Margin="0 200 0 0"></TextBlock>
-        <ComboBox Name="SelectList" Header="Artistas: " MinWidth="400" RelativePanel.Below="titulo" RelativePanel.AlignLeftWith="titulo" Margin="0 100 0 0">
+        <ComboBox Name="SelectList" Header="Artistas: " RelativePanel.Below="titulo" RelativePanel.AlignLeftWith="titulo" Margin="0 100 0 0">
             <ComboBoxItem Content="Lucky Chops"></ComboBoxItem>
             <ComboBoxItem Content="David Guetta"></ComboBoxItem>
             <ComboBoxItem Content="Alvarillolag1"></ComboBoxItem>
             <ComboBoxItem Content="Oliver Heldens"></ComboBoxItem>
             <ComboBoxItem Content="Borgore"/>
         </ComboBox>
-        <Button Content="Play" MinWidth="100" RelativePanel.Below="SelectList" Click="Button_Click" RelativePanel.AlignLeftWith="SelectList" Margin="0 20 0 0"/>
+        <Button Content="Play" RelativePanel.Below="SelectList" Click="Button_Click" RelativePanel.AlignLeftWith="SelectList" Margin="0 20 0 0"/>
     </RelativePanel>
 </Page>
