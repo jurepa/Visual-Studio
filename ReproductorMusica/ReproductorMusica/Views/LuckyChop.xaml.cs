@@ -46,8 +46,11 @@ namespace ReproductorMusica.Views
                     case "For Connie":
                         this.reproductor.Source=new Uri("ms-appx:///Assets/Music/forConnie.mp3");
                         break;
-                    case "Hello (Adelle)":
+                    case "Hello":
                         this.reproductor.Source = new Uri("ms-appx:///Assets/Music/hello.mp3");
+                        break;
+                    case "Hodoo at Sunrise":
+                        this.reproductor.Source = new Uri("ms-appx:///Assets/Music/hodoo.mp3");
                         break;
                 }
             }

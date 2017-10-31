@@ -15,11 +15,11 @@
                 <PivotItem Header="For Connie">
                     <Image Name="foto2" Source="ms-appx:///Assets/Images/rsz_darobehroozi.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
                 </PivotItem>
-                <PivotItem Header="Hello (Adelle)">
+                <PivotItem Header="Hello">
                     <Image Name="foto3" Source="ms-appx:///Assets/Images/rsz_1adelle.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
                 </PivotItem>
                 <PivotItem Header="Hodoo at Sunrise">
-                    <Image Name="foto4" Source="ms-appx:///Assets/Images/rsz_1adelle.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                    <Image Name="foto4" Source="ms-appx:///Assets/Images/luckyescaleras.jpg" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
                 </PivotItem>
             </Pivot>
             <MediaElement Width="400" AutoPlay="True" Height="100" Name="reproductor" RelativePanel.Below="pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
