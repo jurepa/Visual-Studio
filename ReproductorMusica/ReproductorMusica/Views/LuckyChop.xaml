@@ -8,6 +8,9 @@
     mc:Ignorable="d">
     <ScrollViewer>
         <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Button Click="Button_Click" Margin="60">
+                <SymbolIcon Symbol="Back"/>
+            </Button>
             <Pivot Name="pivot" SelectionChanged="pivot_SelectionChanged" LeftHeader="Canciones" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50" >
                 <PivotItem Header="Behroozi">
                     <Image Name="foto1" Source="ms-appx:///Assets/Images/rluckychops.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />

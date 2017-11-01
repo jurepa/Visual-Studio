@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="ReproductorMusica.Views.DavidGuetta"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReproductorMusica.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Button Click="Button_Click" Margin="60">
+                <SymbolIcon Symbol="Back"/>
+            </Button>
+            <Pivot Name="pivot" SelectionChanged="pivot_SelectionChanged" LeftHeader="Canciones" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50" >
+                <PivotItem Header="Sexy B****">
+                    <Image Name="foto1" MinHeight="100" MinWidth="100" Source="ms-appx:///Assets/Images/rsz_sexyb.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="Dangerous">
+                    <Image Name="foto2" Source="ms-appx:///Assets/Images/dangerous.jpg" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="2U">
+                    <Image Name="foto3" Source="ms-appx:///Assets/Images/rsz_2u.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+                <PivotItem Header="Hey Mama">
+                    <Image Name="foto4" Source="ms-appx:///Assets/Images/rsz_heymama.png" Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                </PivotItem>
+            </Pivot>
+            <MediaElement Width="400" AutoPlay="True" Height="100" Name="reproductor" RelativePanel.Below="pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"  RelativePanel.AlignHorizontalCenterWithPanel="True" Source="ms-appx:///Assets/Music/behroozi.mp3" AreTransportControlsEnabled="True"/>
+        </RelativePanel>
+    </ScrollViewer>
+</Page>

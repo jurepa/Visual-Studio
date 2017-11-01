@@ -42,16 +42,16 @@ namespace ReproductorMusica
                         this.Frame.Navigate(typeof(LuckyChop));
                         break;
                     case "Borgore":
-
+                        this.Frame.Navigate(typeof(Borgore));
                         break;
                     case "Alvarillolag1":
                         mostrarAlvarillo();
                         break;
                     case "Oliver Heldens":
-
+                        this.Frame.Navigate(typeof(OliverHeldens));
                         break;
                     case "David Guetta":
-
+                        this.Frame.Navigate(typeof(DavidGuetta));
                         break;
                 }
             }
