@@ -72,5 +72,9 @@ namespace ReproductorMusica
             await message.ShowAsync();
         }
 
+        private void closeApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }

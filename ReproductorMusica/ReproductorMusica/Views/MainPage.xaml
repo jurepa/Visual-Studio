@@ -16,6 +16,7 @@
             <ComboBoxItem Content="Oliver Heldens"></ComboBoxItem>
             <ComboBoxItem Content="Borgore"/>
         </ComboBox>
-        <Button Content="Play" RelativePanel.Below="SelectList" Click="Button_Click" RelativePanel.AlignLeftWith="SelectList" Margin="0 20 0 0"/>
+        <Button Content="Play" Name="play" RelativePanel.Below="SelectList" Click="Button_Click" RelativePanel.AlignLeftWith="SelectList" Margin="0 20 0 0"/>
+        <Button Content="Salir" Name="closeApp" RelativePanel.Below="play" RelativePanel.AlignLeftWith="play" Margin="0 20 0 0" Click="closeApp_Click"/>
     </RelativePanel>
 </Page>
