@@ -7,65 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <RelativePanel>
-        <RelativePanel.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="\Assets\Images\atarde.jpg"/>
-        </RelativePanel.Background>
-        <RelativePanel  Background="CornflowerBlue" Name="barrasuperior" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <ToggleButton Foreground="White" Width="50" Height="50" Name="toggleButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="toggleButton_Click">
-            </ToggleButton>
-            <Image Source="/Assets/Images/sun.gif" Margin="0 0 20 0" Width="30" Height="30" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.LeftOf="textSol"></Image>
-            <TextBlock Name="textSol" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Text="Solarizr" Foreground="White"></TextBlock>
-        </RelativePanel>
-        <RelativePanel RelativePanel.Below="barrasuperior" RelativePanel.AlignBottomWithPanel="True">
-            <SplitView Name="mySplitView" 
-                 IsPaneOpen="False"
-                       DisplayMode="Inline"
-                   CompactPaneLength="0"
-                   OpenPaneLength="250" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
-                <SplitView.Pane>
-                    <RelativePanel Background="LightBlue">
-                        <Button Name="btn1" Click="btn1_Click" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Width="250">
-                            <Button.Content>
-                                <RelativePanel Width="250" Margin="-10 0 0 0">
-                                    <SymbolIcon Name="icon1" Symbol="Home" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.AlignLeftWithPanel="True"></SymbolIcon>
-                                    <TextBlock Name="t1" Text="Home" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.RightOf="icon1" RelativePanel.AlignVerticalCenterWith="icon1" Margin="10 0 0 0"></TextBlock>
-                                </RelativePanel>
-                            </Button.Content>
-                        </Button>
-                        <Button Name="btn2" RelativePanel.Below="btn1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Width="250">
-                            <Button.Content>
-                                <RelativePanel Width="250" Margin="-10 0 0 0">
-                                    <SymbolIcon Name="icon2" Symbol="ContactInfo" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.AlignLeftWithPanel="True"></SymbolIcon>
-                                    <TextBlock Name="t2" Text="Appointments" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.RightOf="icon2" RelativePanel.AlignVerticalCenterWith="icon2" Margin="10 0 0 0"></TextBlock>
-                                </RelativePanel>
-                            </Button.Content>
-                        </Button>
-                        <Rectangle Height="1" Fill="Black" RelativePanel.Above="btn3" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"></Rectangle>
-                        <Button Name="btn3" RelativePanel.Above="btnlogout" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Width="250">
-                            <Button.Content>
-                                <RelativePanel Width="250" Margin="-10 0 0 0">
-                                    <SymbolIcon Name="icon3" Symbol="Help" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.AlignLeftWithPanel="True"></SymbolIcon>
-                                    <TextBlock Name="t3" Text="About" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.RightOf="icon3" RelativePanel.AlignVerticalCenterWith="icon3" Margin="10 0 0 0"></TextBlock>
-                                </RelativePanel>
-                            </Button.Content>
-                        </Button>
-                        <Button Name="btnlogout" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Width="250">
-                            <Button.Content>
-                                <RelativePanel Width="250" Margin="-10 0 0 0">
-                                    <SymbolIcon Name="iconlogout" Symbol="Back" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.AlignLeftWithPanel="True"></SymbolIcon>
-                                    <TextBlock Name="logout" Text="Logout" VerticalAlignment="Center" HorizontalAlignment="Left" RelativePanel.RightOf="iconlogout" RelativePanel.AlignVerticalCenterWith="iconlogout" Margin="10 0 0 0"></TextBlock>
-                                </RelativePanel>
-                            </Button.Content>
-                        </Button>
-                    </RelativePanel>
-                </SplitView.Pane>
-                <SplitView.Content>
-                    <Frame Name="myFrame"/>
-                </SplitView.Content>
-            </SplitView>
-        </RelativePanel>
-        <TextBlock Text="ABOUT" RelativePanel.Below="barrasuperior" RelativePanel.AlignRightWithPanel="True" FontSize="30" Foreground="CadetBlue"/>
-    </RelativePanel>
+    <RelativePanel Background="CornflowerBlue">
+        
 
+        <TextBlock Name="Version" Text="Solariz™ Versión 0.50.10" FontFamily="Arial" FontWeight="Bold" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Foreground="AliceBlue" Margin="0 0 0 30"/>
+        <TextBlock Height="465" RelativePanel.Below="Version" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Foreground="AliceBlue" Name="contenido" RelativePanel.AlignRightWithPanel="True">
+            <TextBlock.FontFamily>Arial</TextBlock.FontFamily>
+            <TextBlock.Text>
+                © 2017 Churraca's Team
+                        
+                        All rights reserved. No part of this publication may be reproduced, distributed, or 
+                        transmitted in any form or by any means, including photocopying, recording, or other 
+                        electronic or mechanical methods, without the prior written permission of the publisher, except 
+                        in the case of brief quotations embodied in critical reviews and certain other noncommercial 
+                        uses permitted by copyright law.
+            </TextBlock.Text>
+            <TextBlock.TextWrapping>Wrap</TextBlock.TextWrapping>
+            <TextBlock.Padding>15 0 15 0</TextBlock.Padding>
+        </TextBlock>
+
+    </RelativePanel>
 </Page>

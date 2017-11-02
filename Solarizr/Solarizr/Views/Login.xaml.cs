@@ -26,6 +26,9 @@ namespace Solarizr.Views
         {
             this.InitializeComponent();
         }
+
+       
+
         private void login_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(HomePage));

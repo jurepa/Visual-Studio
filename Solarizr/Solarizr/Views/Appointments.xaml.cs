@@ -20,16 +20,11 @@ namespace Solarizr.Views
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class About : Page
+    public sealed partial class Appointments : Page
     {
-        public About()
+        public Appointments()
         {
             this.InitializeComponent();
-        }
-
-        private void back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(HomePage));
         }
     }
 }
