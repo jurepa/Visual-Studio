@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="BindingSliderFontSize.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BindingSliderFontSize"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="White" Orientation="Vertical">
+        <Slider Name="slider" Margin="50" Minimum="1" Maximum="100"/>
+        <TextBlock Text="Holaaaaaaaaaaaaaaaaaaa" Name="textBlock" FontSize="{Binding ElementName=slider,Path=Value, Mode=OneWay}" TextWrapping="Wrap"/>
+        <TextBox InputScope="Number" Name="textNumbers" Text="{Binding ElementName=slider, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="TextBox_KeyDown"/>
+    </StackPanel>
+</Page>
