@@ -14,20 +14,22 @@
     <div>
         <h2>Tus datos: </h2><br/>
         <form method="post" action="/Home/PersonaModificada">
-            ID: <input type="number" name="idPersona" value=@Model.idPersona /> <br/>
+            ID: @Html.EditorFor(Model => Model.idPersona, new { value = Model.idPersona }) <br/>
             <br />
-            Nombre: <input type="text" name="nombre" value=@Model.nombre /><br/>
+            Nombre: <input type="text" name="nombre" value=@Model.nombre /> @Html.ValidationMessageFor(model => model.nombre)<br/>
             <br />
-            Apellidos: @Html.TextBox("apellidos",Model.apellidos)<br/>
+            Apellidos: @Html.TextBox("apellidos",Model.apellidos)  @Html.ValidationMessageFor(model => model.apellidos)<br/>
             <br />
-            Direccion: @Html.TextBoxFor(Model => Model.direccion, new {value=Model.direccion})<br/>
+            Direccion: @Html.TextBoxFor(Model => Model.direccion, new {value=Model.direccion}) @Html.ValidationMessageFor(model => model.direccion)<br/>
             <br />
-            Telefono: <input type="text" name="telefono" value=@Model.telefono /> <br/>
+            Telefono: <input type="text" name="telefono" value=@Model.telefono />  @Html.ValidationMessageFor(model => model.telefono) <br/>
             <br />
-            Fecha Nacimiento: <input type="text" name="fechaNac" value=@Model.fechaNac /><br/>
+            Fecha Nacimiento: <input type="text" name="fechaNac" value=@Model.fechaNac /> @Html.ValidationMessageFor(model=>model.fechaNac)<br/>
             <br/>
             Departamento: @Html.DropDownListFor(m => m.idDepartamento,new SelectList(Model.lista.lista,"idDepartamento","nombre"))
-            <br /><input type="submit" name="Enviar" value="Enviar"/>
+            <br />
+            @Html.ValidationSummary()
+            <input type="submit" name="Enviar" value="Enviar"/>
         </form>
     </div>
 </body>

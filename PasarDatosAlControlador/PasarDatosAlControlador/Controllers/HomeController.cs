@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace PasarDatosAlControlador.Controllers
 {
@@ -32,16 +33,23 @@ namespace PasarDatosAlControlador.Controllers
         [HttpPost]
         public ActionResult PersonaModificada(PersonaListDepartamento pld)
         {
-            PersonaConNombreDepartamento persona = new PersonaConNombreDepartamento();
-            persona.idDepartamento = pld.idDepartamento;
-            persona.idPersona = pld.idPersona;
-            persona.nombre = pld.nombre;
-            persona.apellidos = pld.apellidos;
-            persona.direccion = pld.direccion;
-            persona.telefono = pld.telefono;
-            persona.fechaNac = pld.fechaNac;
-            persona.nombreDepartamento = pld.getNombreDepartamentoPorId(pld.idDepartamento);
-            return View(persona); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
+            if (!ModelState.IsValid)
+            {
+                return View("Editar", pld);
+            }
+            else
+            {
+                PersonaConNombreDepartamento persona = new PersonaConNombreDepartamento();
+                persona.idDepartamento = pld.idDepartamento;
+                persona.idPersona = pld.idPersona;
+                persona.nombre = pld.nombre;
+                persona.apellidos = pld.apellidos;
+                persona.direccion = pld.direccion;
+                persona.telefono = pld.telefono;
+                persona.fechaNac = pld.fechaNac;
+                persona.nombreDepartamento = pld.getNombreDepartamentoPorId(pld.idDepartamento);
+                return View(persona); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
+            }            
         }
     }
 }
