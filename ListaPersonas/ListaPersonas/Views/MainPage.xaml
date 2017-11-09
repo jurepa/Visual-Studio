@@ -20,9 +20,25 @@
                     <VisualState.Setters>
                         <Setter Target="GridDatos.(Grid.Row)" Value="0"/>
                         <Setter Target="GridDatos.(Grid.Column)" Value="1"/>
+                        <Setter Target="GridDatos.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="scrollViewer.(Grid.ColumnSpan)" Value="2"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <VisualStateGroup x:Name="VisualStateGroup2">
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="GridDatos.(Grid.Row)" Value="0"/>
+                        <Setter Target="GridDatos.(Grid.Column)" Value="1"/>
+                        <Setter Target="GridDatos.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="scrollViewer.(Grid.ColumnSpan)" Value="2"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            
         </VisualStateManager.VisualStateGroups>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -32,8 +48,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer>
-            <ListView Name="lista"  Grid.Column="0" BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding personaSeleccionada,Mode=TwoWay}" ItemsSource="{Binding listado}">
+        <ScrollViewer x:Name="scrollViewer" Grid.ColumnSpan="2">
+            <ListView Name="lista"  BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding personaSeleccionada,Mode=TwoWay}" ItemsSource="{Binding listado}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -45,7 +61,7 @@
             </ListView>
         </ScrollViewer>
         
-        <Grid Grid.Column="0" Grid.Row="1" x:Name="GridDatos" Background="LightGray" DataContext="{Binding Path=personaSeleccionada}" >
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="GridDatos" Background="LightGray" DataContext="{Binding Path=personaSeleccionada}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
