@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-
-namespace PasarDatosAlControlador.Models.Entities
+namespace Entidades
 {   /// <summary>
     /// Clase departamento, con int idDep y string nombre 
     /// </summary>

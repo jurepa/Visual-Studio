@@ -98,8 +98,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\Departamento.cs" />
-    <Compile Include="Models\Entities\Persona.cs" />
     <Compile Include="Models\Lists\ListDepartamento.cs" />
     <Compile Include="Models\Lists\ListPersona.cs" />
     <Compile Include="Models\ViewModels\PersonaConNombreDepartamento.cs" />
@@ -120,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{3b1bd0d4-bfea-4eda-a5cd-f0785abfbfcf}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
