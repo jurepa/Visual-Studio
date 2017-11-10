@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="Ejercicio_Layouts_y_VisualState.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ejercicio_Layouts_y_VisualState"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel Background="AliceBlue">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Ancho">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Estrecho">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Barra.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
+                        <Setter Target="Grid.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="Grid.(RelativePanel.AlignTopWithPanel)" Value="False"/>
+                        <Setter Target="Barra.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="Barra.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="Grid.(RelativePanel.Below)" Value="Barra"/>
+                        <Setter Target="Barra.(Orientation)" Value="Horizontal"/>
+                        <Setter Target="Barra.(RelativePanel.Above)" Value="Grid"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Background="Aquamarine" Orientation="Vertical" Name="Barra" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Width="100">
+            <AppBarButton Icon="Accept" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="Account" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="Admin" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="AllApps" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="AttachCamera" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="Bold" HorizontalAlignment="Center"/>
+            <AppBarButton Icon="Bullets" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+            <StackPanel Background="AliceBlue" RelativePanel.Below="Barra" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></StackPanel>
+        </ScrollViewer>
+        <Grid Name="Grid" RelativePanel.RightOf="Barra" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="ms-appx:///Assets/Images/img1.jpg" Stretch="Fill"/>
+            <Image Source="ms-appx:///Assets/Images/img2.jpg" Grid.Column="1" Stretch="Fill"/>
+            <Image Source="ms-appx:///Assets/Images/img3.jpg" Grid.Column="2" Stretch="Fill"/>
+            <Image Source="ms-appx:///Assets/Images/img3.jpg" Grid.Row="1" Stretch="Fill"/>
+            <Image Source="ms-appx:///Assets/Images/img1.jpg" Grid.Column="1" Grid.Row="1" Stretch="Fill"/>
+            <Image Source="ms-appx:///Assets/Images/img2.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="1"/>
+            <Image Source="ms-appx:///Assets/Images/img2.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="2"/>
+            <Image Source="ms-appx:///Assets/Images/img3.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="2"/>
+            <Image Source="ms-appx:///Assets/Images/img1.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="2"/>
+        </Grid>
+    </RelativePanel>
+</Page>
