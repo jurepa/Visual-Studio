@@ -27,12 +27,11 @@
                         <Setter Target="Barra.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
                         <Setter Target="Grid.(RelativePanel.Below)" Value="Barra"/>
                         <Setter Target="Barra.(Orientation)" Value="Horizontal"/>
-                        <Setter Target="Barra.(RelativePanel.Above)" Value="Grid"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <StackPanel Background="Aquamarine" Orientation="Vertical" Name="Barra" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Width="100">
+        <StackPanel Background="Aquamarine" Orientation="Vertical" Name="Barra" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
             <AppBarButton Icon="Accept" HorizontalAlignment="Center"/>
             <AppBarButton Icon="Account" HorizontalAlignment="Center"/>
             <AppBarButton Icon="Admin" HorizontalAlignment="Center"/>
