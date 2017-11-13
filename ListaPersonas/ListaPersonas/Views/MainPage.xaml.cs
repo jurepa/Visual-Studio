@@ -31,5 +31,12 @@ namespace ListaPersonas
             
         }
 
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.txtNombre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.txtApellidos.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.txtTelefono.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.txtDireccion.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
     }
 }

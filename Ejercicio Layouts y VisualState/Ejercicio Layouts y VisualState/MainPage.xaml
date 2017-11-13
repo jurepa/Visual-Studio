@@ -61,7 +61,7 @@
             <!--<ScrollViewer VerticalScrollBarVisibility="Disabled">
                 <StackPanel Background="AliceBlue" RelativePanel.Below="Barra" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></StackPanel>
             </ScrollViewer>-->
-        <ScrollViewer Name="Scroll" RelativePanel.RightOf="Barra">
+        <ScrollViewer Name="Scroll" RelativePanel.RightOf="Barra" RelativePanel.AlignHorizontalCenterWithPanel="True">
             <Grid Name="Grid"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
