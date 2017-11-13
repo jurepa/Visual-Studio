@@ -7,62 +7,89 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <RelativePanel Background="AliceBlue">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="Ancho">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="Estrecho">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Barra.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
-                        <Setter Target="Grid.(RelativePanel.RightOf)" Value=""/>
-                        <Setter Target="Grid.(RelativePanel.AlignTopWithPanel)" Value="False"/>
-                        <Setter Target="Barra.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="Barra.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
-                        <Setter Target="Grid.(RelativePanel.Below)" Value="Barra"/>
-                        <Setter Target="Barra.(Orientation)" Value="Horizontal"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <StackPanel Background="Aquamarine" Orientation="Vertical" Name="Barra" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
-            <AppBarButton Icon="Accept" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="Account" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="Admin" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="AllApps" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="AttachCamera" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="Bold" HorizontalAlignment="Center"/>
-            <AppBarButton Icon="Bullets" HorizontalAlignment="Center"/>
-        </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Disabled">
-            <StackPanel Background="AliceBlue" RelativePanel.Below="Barra" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></StackPanel>
+        <RelativePanel Background="AliceBlue">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="Ancho">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="600"/>
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                    <VisualState x:Name="Estrecho">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="Barra.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
+                            <Setter Target="Scroll.(RelativePanel.RightOf)" Value=""/>
+                            <Setter Target="Grid.(RelativePanel.AlignTopWithPanel)" Value="False"/>
+                            <Setter Target="Barra.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                            <Setter Target="Barra.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                            <Setter Target="Scroll.(RelativePanel.Below)" Value="Barra"/>
+                            <Setter Target="Barra.(Orientation)" Value="Horizontal"/>
+                            <Setter Target="img1.(Grid.Column)" Value="0"/>
+                            <Setter Target="img1.(Grid.Row)" Value="0"/>
+                            <Setter Target="img2.(Grid.Column)" Value="0"/>
+                            <Setter Target="img2.(Grid.Row)" Value="1"/>
+                            <Setter Target="img3.(Grid.Column)" Value="0"/>
+                            <Setter Target="img3.(Grid.Row)" Value="2"/>
+                            <Setter Target="img4.(Grid.Column)" Value="0"/>
+                            <Setter Target="img4.(Grid.Row)" Value="3"/>
+                            <Setter Target="img5.(Grid.Column)" Value="0"/>
+                            <Setter Target="img5.(Grid.Row)" Value="4"/>
+                            <Setter Target="img6.(Grid.Column)" Value="0"/>
+                            <Setter Target="img6.(Grid.Row)" Value="5"/>
+                            <Setter Target="img7.(Grid.Column)" Value="0"/>
+                            <Setter Target="img7.(Grid.Row)" Value="6"/>
+                            <Setter Target="img8.(Grid.Column)" Value="0"/>
+                            <Setter Target="img8.(Grid.Row)" Value="7"/>
+                            <Setter Target="img9.(Grid.Column)" Value="0"/>
+                            <Setter Target="img9.(Grid.Row)" Value="8"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <StackPanel Background="Aquamarine" Orientation="Vertical" Name="Barra" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                <AppBarButton Icon="Accept" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="Account" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="Admin" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="AllApps" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="AttachCamera" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="Bold" HorizontalAlignment="Center"/>
+                <AppBarButton Icon="Bullets" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <!--<ScrollViewer VerticalScrollBarVisibility="Disabled">
+                <StackPanel Background="AliceBlue" RelativePanel.Below="Barra" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></StackPanel>
+            </ScrollViewer>-->
+        <ScrollViewer Name="Scroll" RelativePanel.RightOf="Barra">
+            <Grid Name="Grid"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="ms-appx:///Assets/Images/img1.jpg" Name="img1" Stretch="Fill"/>
+                <Image Source="ms-appx:///Assets/Images/img2.jpg" Name="img2" Grid.Column="1" Stretch="Fill"/>
+                <Image Source="ms-appx:///Assets/Images/img3.jpg" Name="img3" Grid.Column="2" Stretch="Fill"/>
+                <Image Source="ms-appx:///Assets/Images/img3.jpg" Name="img4" Grid.Row="1" Stretch="Fill"/>
+                <Image Source="ms-appx:///Assets/Images/img1.jpg" Name="img5" Grid.Column="1" Grid.Row="1" Stretch="Fill"/>
+                <Image Source="ms-appx:///Assets/Images/img2.jpg" Name="img6" Stretch="Fill" Grid.Column="2" Grid.Row="1"/>
+                <Image Source="ms-appx:///Assets/Images/img2.jpg" Name="img7" Stretch="Fill" Grid.Column="0" Grid.Row="2"/>
+                <Image Source="ms-appx:///Assets/Images/img3.jpg" Name="img8" Stretch="Fill" Grid.Column="1" Grid.Row="2"/>
+                <Image Source="ms-appx:///Assets/Images/img1.jpg" Name="img9" Stretch="Fill" Grid.Column="2" Grid.Row="2"/>
+            </Grid>
         </ScrollViewer>
-        <Grid Name="Grid" RelativePanel.RightOf="Barra" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="ms-appx:///Assets/Images/img1.jpg" Stretch="Fill"/>
-            <Image Source="ms-appx:///Assets/Images/img2.jpg" Grid.Column="1" Stretch="Fill"/>
-            <Image Source="ms-appx:///Assets/Images/img3.jpg" Grid.Column="2" Stretch="Fill"/>
-            <Image Source="ms-appx:///Assets/Images/img3.jpg" Grid.Row="1" Stretch="Fill"/>
-            <Image Source="ms-appx:///Assets/Images/img1.jpg" Grid.Column="1" Grid.Row="1" Stretch="Fill"/>
-            <Image Source="ms-appx:///Assets/Images/img2.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="1"/>
-            <Image Source="ms-appx:///Assets/Images/img2.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="2"/>
-            <Image Source="ms-appx:///Assets/Images/img3.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="2"/>
-            <Image Source="ms-appx:///Assets/Images/img1.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="2"/>
-        </Grid>
     </RelativePanel>
+    <!--</ScrollViewer>-->
 </Page>
