@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <p>@ViewData["info"]</p>
+        <form method="post" action="/Home/Index2">
+            <input type="submit" title="Abrir/Cerra conexion"/>
+        </form>
+    </div>
+</body>
+</html>
