@@ -15,6 +15,7 @@ namespace ListaPersonas.ViewModel
         #region "Atributos"
         private ObservableCollection<Persona> _listado;
         private Persona _personaSeleccionada;
+        private DelegateCommand _delete;
         #endregion
         #region "Constructores"
         public ListPersonaConPersonaSeleccionada()
@@ -25,6 +26,19 @@ namespace ListaPersonas.ViewModel
         #endregion
         
         #region "Propiedades públicas"
+        public DelegateCommand delete
+        {
+            get
+            {
+                _delete= new DelegateCommand(ExecuteDelete, CanExecuteDelete);
+                return _delete;
+            }
+
+            set
+            {
+                _delete = value;
+            }
+        }
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
@@ -35,15 +49,27 @@ namespace ListaPersonas.ViewModel
             set
             {
                 _personaSeleccionada = value;
+                _delete.RaiseCanExecuteChanged();
                 //Notificación de cambio a la vista
                 NotifyPropertyChanged("personaSeleccionada");
             }
         }
         #endregion
-        /// <summary>
-        /// Método para lanzar el evento
-        /// </summary>
-        /// <param name="propertyName"></param>
+        public bool CanExecuteDelete()
+        {
+            bool canExecute = false;
+            if (_personaSeleccionada != null)
+            {
+                canExecute = true;
+            }
+            return canExecute;
+        }
+
+        public void ExecuteDelete()
+        {
+            listado.Remove(_personaSeleccionada);
+            NotifyPropertyChanged("listado");
+        }
 
 
 
