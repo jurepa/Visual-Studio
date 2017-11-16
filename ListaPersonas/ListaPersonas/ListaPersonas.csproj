@@ -97,6 +97,8 @@
     </Compile>
     <Compile Include="Models\ListPersona.cs" />
     <Compile Include="Models\Persona.cs" />
+    <Compile Include="ViewModel\clsVMBase.cs" />
+    <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\ListPersonaConPersonaSeleccionada.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
