@@ -24,11 +24,11 @@ namespace ListaPersonas
     /// </summary>
     public sealed partial class MainPage : Page
     {
-  
+        public ListPersonaConPersonaSeleccionada ViewModel { get; } = new ListPersonaConPersonaSeleccionada();
+
         public MainPage()
         {
             this.InitializeComponent();
-            
         }
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
