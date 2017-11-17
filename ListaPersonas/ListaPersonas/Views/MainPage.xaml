@@ -81,8 +81,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
-                <AppBarButton Icon="Save" Label="Guardar" Click="AppBarButton_Click"/>
+                <AppBarButton Icon="Save" Label="Guardar" Command="{Binding editPersona}"/>
                 <AppBarButton Icon="Delete" Label="Borrar" Command="{Binding delete}" />
+                <AppBarButton Icon="Add" Label="Añadir" Command="{Binding addPersona}"/>
             </StackPanel>
             <TextBlock Text="Nombre: " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
             <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.nombre,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
