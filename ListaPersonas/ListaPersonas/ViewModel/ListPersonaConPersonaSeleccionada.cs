@@ -41,7 +41,7 @@ namespace ListaPersonas.ViewModel
                 _delete = value;
             }
         }
-        /*public DelegateCommand addPersona
+        public DelegateCommand addPersona
         {
             get
             {
@@ -57,14 +57,14 @@ namespace ListaPersonas.ViewModel
         {
             get
             {
-                _savePersona = new DelegateCommand(ExecuteSavePersona,canExecuteSavePersona);
+                _savePersona = new DelegateCommand(ExecuteSavePersona);
                 return _savePersona;
             }
             set
             {
                 _savePersona = value;
             }
-        }*/
+        }
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
@@ -76,7 +76,7 @@ namespace ListaPersonas.ViewModel
             {
                 _personaSeleccionada = value;
                 _delete.RaiseCanExecuteChanged();
-                //_savePersona.RaiseCanExecuteChanged();
+                _savePersona.RaiseCanExecuteChanged();
                 //Notificación de cambio a la vista
                 NotifyPropertyChanged("personaSeleccionada");
             }
@@ -97,25 +97,31 @@ namespace ListaPersonas.ViewModel
             listado.Remove(_personaSeleccionada);
             NotifyPropertyChanged("listado");
         }
-       /* public void ExecuteAddPersona()
+        public void ExecuteAddPersona()
         {
             _personaSeleccionada = new Persona();
             NotifyPropertyChanged("personaSeleccionada");
         }
-        private bool canExecuteSavePersona()
-        {
-            bool sePuede = false;
-            if (_personaSeleccionada != null)
-            {
-                sePuede = true;
-            }
-            return sePuede;
-        }
+        //private bool canExecuteSavePersona()
+        //{
+        //    bool sePuede = false;
+        //    if (_personaSeleccionada != null)
+        //    {
+        //        sePuede = true;
+
+        //    }
+        //    return sePuede;
+        //}
         private void ExecuteSavePersona()
         {
-            listado.Add(_personaSeleccionada);
-            NotifyPropertyChanged("listado");
-        }*/
+            if (_personaSeleccionada.idPersona == 0)
+            {
+                _personaSeleccionada.idPersona=listado.ElementAt(listado.Count - 1).idPersona+1;
+                NotifyPropertyChanged("personaSeleccionada");
+                listado.Add(_personaSeleccionada);
+                NotifyPropertyChanged("listado");
+            }
+        }
 
     }
 }

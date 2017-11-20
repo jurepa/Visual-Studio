@@ -24,6 +24,7 @@ namespace ListaPersonas.Models
             persona2.apellidos = "Ivienen";
             persona2.direccion = "Allí";
             persona2.telefono = "Tampoco tiene";
+            persona3.idPersona = 3;
             persona3.nombre = "Manu";
             persona3.apellidos = "Werty0LaBala";
             persona3.direccion = "No jave ni ond bibe hulio";

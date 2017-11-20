@@ -81,12 +81,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
-                <AppBarButton Icon="Save" Label="Guardar" Command="{Binding editPersona}"/>
+                <AppBarButton Icon="Save" Label="Guardar" Command="{Binding savePersona}" Click="AppBarButton_Click"/>
                 <AppBarButton Icon="Delete" Label="Borrar" Command="{Binding delete}" />
                 <AppBarButton Icon="Add" Label="Añadir" Command="{Binding addPersona}"/>
+                <TextBox Name="busqueda" Margin="10"/>
+                <AppBarButton Icon="Find"></AppBarButton>
             </StackPanel>
             <TextBlock Text="Nombre: " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
-            <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.nombre,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
+            <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.nombre,Mode=TwoWay}"/>
             <TextBlock Text="Apellidos: " Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
             <TextBox Name="txtApellidos" Grid.Column="1" Grid.Row="2" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.apellidos,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
             <TextBlock Text="Telefono: " Grid.Column="0" Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
