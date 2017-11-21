@@ -15,9 +15,11 @@ namespace ListaPersonas.ViewModel
         #region "Atributos"
         private ObservableCollection<Persona> _listado;
         private Persona _personaSeleccionada;
+        private string _textoBusqueda;
         private DelegateCommand _delete;
         private DelegateCommand _addPersona;
         private DelegateCommand _savePersona;
+        private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
         public ListPersonaConPersonaSeleccionada()
@@ -39,6 +41,18 @@ namespace ListaPersonas.ViewModel
             set
             {
                 _delete = value;
+            }
+        }
+        public string textoBusqueda
+        {
+            get
+            {
+                return _textoBusqueda;
+            }
+
+            set
+            {
+                _textoBusqueda = value;
             }
         }
         public DelegateCommand addPersona

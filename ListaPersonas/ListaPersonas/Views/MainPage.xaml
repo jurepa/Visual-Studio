@@ -84,7 +84,7 @@
                 <AppBarButton Icon="Save" Label="Guardar" Command="{Binding savePersona}" Click="AppBarButton_Click"/>
                 <AppBarButton Icon="Delete" Label="Borrar" Command="{Binding delete}" />
                 <AppBarButton Icon="Add" Label="Añadir" Command="{Binding addPersona}"/>
-                <TextBox Name="busqueda" Margin="10"/>
+                <TextBox Name="busqueda" Margin="10" PlaceholderText="Search..." Width="200" Height="10" VerticalAlignment="Top" Text="{Binding textoBusqueda,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"/>
                 <AppBarButton Icon="Find"></AppBarButton>
             </StackPanel>
             <TextBlock Text="Nombre: " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
