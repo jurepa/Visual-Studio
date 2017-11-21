@@ -17,5 +17,24 @@ namespace CRUD_Personas_BL.Listados
             
             return listadoParaUI;
         }
+        public Persona getPersona(int id)
+        {
+            ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
+
+            Persona personaUI=listadoPersonas.getPersona(id);
+
+            return personaUI;
+        }
+
+        public void updatePersona(Persona p)
+        {
+            ListadoPersonasDAL listado = new ListadoPersonasDAL();
+            listado.updatePersona(p);
+        }
+        public void deletePersona(int id)
+        {
+            ListadoPersonasDAL listado = new ListadoPersonasDAL();
+            listado.deletePersona(id);
+        }
     }
 }

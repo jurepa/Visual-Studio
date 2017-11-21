@@ -17,5 +17,87 @@ namespace CRUD_Personas_UI.Controllers
             List<Persona> listaVista = listado.getListadoBL();
             return View(listaVista);
         }
+        public ActionResult Edit(int id)
+        {
+            ListadoPersonasBL listado = new ListadoPersonasBL();
+            Persona persona = listado.getPersona(id);
+            return View(persona);
+        }
+        [HttpPost]
+        public ActionResult Edit(Persona p)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", p);
+            }
+            else
+            {
+                try
+                {
+                    ListadoPersonasBL listado = new ListadoPersonasBL();
+                    listado.updatePersona(p);
+                    return RedirectToAction("Index"); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
+                }
+                catch (Exception)
+                {
+                    return View("ErrorPage");
+                }
+            }
+
+        }
+        public ActionResult Details(int id)
+        {
+            ListadoPersonasBL listado = new ListadoPersonasBL();
+            Persona persona = listado.getPersona(id);
+            return View(persona);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            ListadoPersonasBL listado = new ListadoPersonasBL();
+            Persona persona = listado.getPersona(id);
+            return View(persona);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteSql(int id)
+        {
+            ListadoPersonasBL listado = new ListadoPersonasBL();
+            try
+            {
+                listado.deletePersona(id);
+            }
+            catch (Exception)
+            {
+                return View("Error page");
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Persona p)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create",p);//!!!!!!!!!!!!!!!!!!
+            }
+            else
+            {
+                try
+                {
+                    ListadoPersonasBL listado = new ListadoPersonasBL();
+                    listado.updatePersona(p);
+                    return RedirectToAction("Index"); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
+                }
+                catch (Exception)
+                {
+                    return View("ErrorPage");
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
