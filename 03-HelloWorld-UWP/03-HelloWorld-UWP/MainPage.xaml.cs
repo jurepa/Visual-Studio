@@ -27,10 +27,6 @@ namespace _03_HelloWorld_UWP
             this.InitializeComponent();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
         /// <summary>
         /// Este método será ejecutado cuando se pulse el botón
         /// </summary>
@@ -71,15 +67,11 @@ namespace _03_HelloWorld_UWP
             ContentDialog mensajeOk = new ContentDialog
             {
                 Title = "Hey crack",
-                Content = "Hola"+mensaje,
+                Content = $"Hola {mensaje}",
                 CloseButtonText = "Vale maquina",
             };
             ContentDialogResult result = await mensajeOk.ShowAsync();
         }
 
-        private void boton_Click(System.Object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

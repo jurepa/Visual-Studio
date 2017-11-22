@@ -1,1 +1,1 @@
-C:\Users\pjarana\source\repos\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid.csproj;x86
+E:\_Perfil\Desktop\GitHub\Visual-Studio\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid\02-VariableSizedWrapGrid.csproj;x86

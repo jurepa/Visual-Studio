@@ -24336,11 +24336,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\SEGUNDO\\DI\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\03-HelloWorld-UWP.csproj",
+      "projectUniqueName": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\03-HelloWorld-UWP.csproj",
       "projectName": "03-HelloWorld-UWP",
-      "projectPath": "K:\\SEGUNDO\\DI\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\03-HelloWorld-UWP.csproj",
+      "projectPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\03-HelloWorld-UWP.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "K:\\SEGUNDO\\DI\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\obj\\",
+      "outputPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\03-HelloWorld-UWP\\03-HelloWorld-UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -24358,12 +24358,6 @@
         "uap10.0.10586": {
           "projectReferences": {}
         }
-      }
-    },
-    "dependencies": {
-      "Microsoft.NETCore.UniversalWindowsPlatform": {
-        "target": "Package",
-        "version": "5.4.0"
       }
     },
     "frameworks": {

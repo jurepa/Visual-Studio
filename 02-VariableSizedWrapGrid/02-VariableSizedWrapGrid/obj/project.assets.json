@@ -24331,20 +24331,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pjarana\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pjarana\\source\\repos\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid.csproj",
+      "projectUniqueName": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid.csproj",
       "projectName": "02-VariableSizedWrapGrid",
-      "projectPath": "C:\\Users\\pjarana\\source\\repos\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid.csproj",
-      "packagesPath": "C:\\Users\\pjarana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pjarana\\source\\repos\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\obj\\",
+      "projectPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "E:\\_Perfil\\Desktop\\GitHub\\Visual-Studio\\02-VariableSizedWrapGrid\\02-VariableSizedWrapGrid\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\pjarana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -24358,12 +24358,6 @@
         "uap10.0.10586": {
           "projectReferences": {}
         }
-      }
-    },
-    "dependencies": {
-      "Microsoft.NETCore.UniversalWindowsPlatform": {
-        "target": "Package",
-        "version": "5.4.0"
       }
     },
     "frameworks": {
