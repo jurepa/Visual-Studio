@@ -14,6 +14,7 @@ namespace ListaPersonas.ViewModel
     {
         #region "Atributos"
         private ObservableCollection<Persona> _listado;
+        private ObservableCollection<Persona> _listadoAux;
         private Persona _personaSeleccionada;
         private string _textoBusqueda;
         private DelegateCommand _delete;
@@ -26,6 +27,7 @@ namespace ListaPersonas.ViewModel
         {
             ListPersona lista = new ListPersona();
             this._listado = lista.listado;
+            this._listadoAux = this._listado;
         }
         #endregion
         
@@ -43,6 +45,19 @@ namespace ListaPersonas.ViewModel
                 _delete = value;
             }
         }
+        public ObservableCollection<Persona> listadoAux
+        {
+            get
+            {
+                return _listadoAux;
+            }
+
+            set
+            {
+                _listadoAux = value;
+                NotifyPropertyChanged("listadoAux");
+            }
+        }
         public string textoBusqueda
         {
             get
@@ -53,6 +68,7 @@ namespace ListaPersonas.ViewModel
             set
             {
                 _textoBusqueda = value;
+                _searchPersona.RaiseCanExecuteChanged();
             }
         }
         public DelegateCommand addPersona
@@ -77,6 +93,20 @@ namespace ListaPersonas.ViewModel
             set
             {
                 _savePersona = value;
+            }
+        }
+        public DelegateCommand searchPersona
+        {
+            get
+            {
+                _searchPersona = new DelegateCommand(ExecuteSearchPersona,CanExecuteSearchPersona);
+                return _searchPersona;
+                
+            }
+
+            set
+            {
+                _searchPersona = value;
             }
         }
         public ObservableCollection<Persona> listado
@@ -106,6 +136,35 @@ namespace ListaPersonas.ViewModel
             return canExecute;
         }
 
+        public void ExecuteSearchPersona()
+        {
+            listadoAux = new ObservableCollection<Persona>();
+            NotifyPropertyChanged("listadoAux");
+            string nombre=null;
+            for (int i = 0; i < _listado.Count; i++)
+            {
+                nombre =_listado.ElementAt(i).nombre.ToLower();
+                if (nombre.Contains(textoBusqueda.ToLower()))
+                {
+                    listadoAux.Add(_listado.ElementAt(i));
+                    NotifyPropertyChanged("listadoAux");
+                }
+            }
+        }
+        public bool CanExecuteSearchPersona()
+        {
+            bool encontrado = false;
+            if (!String.IsNullOrEmpty(textoBusqueda))
+            {
+                encontrado = true;
+            }
+            else
+            {
+                listadoAux = listado;
+                NotifyPropertyChanged("listadoAux");
+            }
+            return encontrado;
+        }
         public void ExecuteDelete()
         {
             listado.Remove(_personaSeleccionada);
@@ -130,10 +189,10 @@ namespace ListaPersonas.ViewModel
         {
             if (_personaSeleccionada.idPersona == 0)
             {
-                _personaSeleccionada.idPersona=listado.ElementAt(listado.Count - 1).idPersona+1;
+                _personaSeleccionada.idPersona=listadoAux.ElementAt(listado.Count - 1).idPersona+1;
                 NotifyPropertyChanged("personaSeleccionada");
-                listado.Add(_personaSeleccionada);
-                NotifyPropertyChanged("listado");
+                listadoAux.Add(_personaSeleccionada);
+                NotifyPropertyChanged("listadoAux");
             }
         }
 
