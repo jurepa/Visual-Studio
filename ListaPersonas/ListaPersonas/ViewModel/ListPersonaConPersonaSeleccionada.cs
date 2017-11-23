@@ -20,7 +20,7 @@ namespace ListaPersonas.ViewModel
         private DelegateCommand _delete;
         private DelegateCommand _addPersona;
         private DelegateCommand _savePersona;
-        private DelegateCommand _searchPersona;
+        //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
         public ListPersonaConPersonaSeleccionada()
@@ -68,7 +68,16 @@ namespace ListaPersonas.ViewModel
             set
             {
                 _textoBusqueda = value;
-                _searchPersona.RaiseCanExecuteChanged();
+                //_searchPersona.RaiseCanExecuteChanged();
+                if (String.IsNullOrWhiteSpace(_textoBusqueda))
+                {
+                    _listadoAux = _listado;
+                    NotifyPropertyChanged("listadoAux");
+                }
+                else
+                {
+                    buscaPersona();
+                }
             }
         }
         public DelegateCommand addPersona
@@ -95,7 +104,7 @@ namespace ListaPersonas.ViewModel
                 _savePersona = value;
             }
         }
-        public DelegateCommand searchPersona
+       /* public DelegateCommand searchPersona
         {
             get
             {
@@ -108,7 +117,7 @@ namespace ListaPersonas.ViewModel
             {
                 _searchPersona = value;
             }
-        }
+        }*/
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
@@ -167,8 +176,10 @@ namespace ListaPersonas.ViewModel
         }
         public void ExecuteDelete()
         {
-            listado.Remove(_personaSeleccionada);
+            listadoAux.Remove(_personaSeleccionada);
+            listado.Remove(_personaSeleccionada); //No borra la persona seleccionada en el listado original, dnt know why
             NotifyPropertyChanged("listado");
+            NotifyPropertyChanged("listadoAux");
         }
         public void ExecuteAddPersona()
         {
@@ -196,5 +207,21 @@ namespace ListaPersonas.ViewModel
             }
         }
 
+        private void buscaPersona()
+        {
+            _listadoAux = new ObservableCollection<Persona>();
+            NotifyPropertyChanged("listadoAux");
+            string nombre = null;
+            for (int i = 0; i < _listado.Count; i++)
+            {
+                nombre = _listado.ElementAt(i).nombre.ToLower();
+                if (nombre.Contains(_textoBusqueda.ToLower()))
+                {
+                    _listadoAux.Add(_listado.ElementAt(i));
+                    NotifyPropertyChanged("listadoAux");
+                }
+            }
+
+        }
     }
 }
