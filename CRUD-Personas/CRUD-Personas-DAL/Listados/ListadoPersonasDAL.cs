@@ -162,5 +162,46 @@ namespace CRUD_Personas_DAL.Listados
                 throw;
             }
         }
+        public void insertPersona(Persona p)
+        {
+            Connection cx = new Connection();
+            SqlCommand consulta = new SqlCommand();
+            SqlParameter nombre = new SqlParameter();
+            SqlParameter apellidos = new SqlParameter();
+            SqlParameter direccion = new SqlParameter();
+            SqlParameter telefono = new SqlParameter();
+            try
+            {
+                nombre.ParameterName = "@nombre";
+                nombre.SqlDbType = System.Data.SqlDbType.NVarChar;
+                nombre.Value = p.nombre;
+
+                apellidos.ParameterName = "@apellidos";
+                apellidos.SqlDbType = System.Data.SqlDbType.NVarChar;
+                apellidos.Value = p.apellidos;
+
+                direccion.ParameterName = "@direccion";
+                direccion.SqlDbType = System.Data.SqlDbType.NVarChar;
+                direccion.Value = p.direccion;
+
+                telefono.ParameterName = "@telefono";
+                telefono.SqlDbType = System.Data.SqlDbType.Char;
+                telefono.Value = p.telefono;
+
+
+                consulta.Parameters.Add(nombre);
+                consulta.Parameters.Add(apellidos);
+                consulta.Parameters.Add(direccion);
+                consulta.Parameters.Add(telefono);
+                consulta.CommandText = "INSERT INTO PERSONAS (Nombre,Apellidos,Direccion,Telefono) VALUES (@nombre,@apellidos,@direccion,@telefono)";
+                consulta.Connection = cx.conexion;
+                consulta.ExecuteNonQuery();
+                cx.closeConnection();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }

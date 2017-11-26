@@ -36,5 +36,10 @@ namespace CRUD_Personas_BL.Listados
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
             listado.deletePersona(id);
         }
+        public void insertPersona(Persona p)
+        {
+            ListadoPersonasDAL listado = new ListadoPersonasDAL();
+            listado.insertPersona(p);
+        }
     }
 }

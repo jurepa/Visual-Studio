@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CRUD_Personas_BL.Listados;
 using CRUD_Personas_Entidades;
+using System.Data.SqlClient;
 
 namespace CRUD_Personas_UI.Controllers
 {
@@ -89,15 +90,14 @@ namespace CRUD_Personas_UI.Controllers
                 try
                 {
                     ListadoPersonasBL listado = new ListadoPersonasBL();
-                    listado.updatePersona(p);
+                    listado.insertPersona(p);
                     return RedirectToAction("Index"); //Crear un viewModel que herede de persona y que tenga como propiedad añadida el nombre del departamento
                 }
-                catch (Exception)
+                catch (SqlException)
                 {
                     return View("ErrorPage");
                 }
             }
-            return RedirectToAction("Index");
         }
     }
 }
