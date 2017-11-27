@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="ExamenPrimeraEv.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExamenPrimeraEv"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:modelo="using:ExamenPrimeraEv.ViewModel"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <modelo:MainPageVM/>
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Indica las 7 diferencias: " Name="descripcionJuego" FontSize="30" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+        <Image Source="ms-appx://ExamenPrimeraEv/Assets/Imagenes/Diferencias.jpg" RelativePanel.AlignVerticalCenterWithPanel="True" Grid.Column="0" Grid.Row="1"/>
+        <Grid  Grid.Column="0" Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Grid.Column="1" Grid.Row="2" Name="Diferencia1_1" Fill="Red" Opacity="{x:Bind vm.elipsedif1img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia1_1_PointerPressed}"/>
+            <Ellipse Grid.Column="5" Margin="0 20 40 0" Grid.Row="2" Name="Diferencia2_1" Fill="Red" Opacity="{x:Bind vm.elipsedif2img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia2_1_PointerPressed}" />
+            <Ellipse Grid.Column="6" Margin="0 20 30 0" Grid.Row="2" Name="Diferencia3_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif3img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia3_1_PointerPressed}"/>
+            <Ellipse Grid.Column="7" HorizontalAlignment="Left" Width="50" Height="50" VerticalAlignment="Bottom" Grid.Row="2" Name="Diferencia4_1" Fill="Red" Opacity="{x:Bind vm.elipsedif4img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia4_1_PointerPressed}"/>
+            <Ellipse Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="3" Name="Diferencia5_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif5img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia5_1_PointerPressed}"/>
+            <Ellipse Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="3" Name="Diferencia6_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif6img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia6_1_PointerPressed}"/>
+            <Ellipse Grid.Column="2" Grid.Row="4" Name="Diferencia7_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif7img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia7_1_PointerPressed}"/>
+        </Grid>
+        <Image Source="ms-appx://ExamenPrimeraEv/Assets/Imagenes/Diferencias2.jpg" RelativePanel.AlignVerticalCenterWithPanel="True" Grid.Column="1" Grid.Row="1"/>
+        <Grid  Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Grid.Column="1" Grid.Row="2" Name="Diferencia1_2" Fill="Red" Opacity="{Binding elipseSeleccionada.Opacity}"/>
+            <Ellipse Grid.Column="5" Margin="0 20 40 0" Grid.Row="2" Name="Diferencia2_2" Fill="Red" Opacity="{Binding elipseSeleccionada.Opacity}"/>
+            <Ellipse Grid.Column="6" Margin="0 20 30 0" Grid.Row="2" Name="Diferencia3_2" Fill="Red" Width="60" Opacity="{Binding elipseSeleccionada.Opacity}" Height="60"/>
+            <Ellipse Grid.Column="7" Margin="0 80 60 0" Grid.Row="2" Name="Diferencia4_2" Fill="Red" Width="60" Opacity="{Binding elipseSeleccionada.Opacity}" Height="60"/>
+            <Ellipse Grid.Column="5" Margin="0 0 50 50" Grid.Row="3" Name="Diferencia5_2" Fill="Red" Width="60" Opacity="{Binding elipseSeleccionada.Opacity}" Height="60"/>
+            <Ellipse Grid.Column="3" Grid.Row="3" Name="Diferencia6_2" Fill="Red" Width="60" Opacity="{Binding elipseSeleccionada.Opacity}" Height="60" Margin="47,0,0,89"/>
+            <Ellipse Grid.Column="2" Grid.Row="4" Margin="47,78,0,10" Name="Diferencia7_2" Fill="Red" Width="60" Opacity="{Binding elipseSeleccionada.Opacity}" Height="60"/>
+        </Grid>
+    </Grid>
+</Page>
