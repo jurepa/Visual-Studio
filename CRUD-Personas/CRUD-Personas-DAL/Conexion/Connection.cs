@@ -35,16 +35,16 @@ namespace CRUD_Personas_DAL.Conexion
         {
             this.dataBase = "PersonasDB";
             //El primer usuario es de de la base de datos del instituto, el segundo la de casa
-            this.user = "pjarana";
+            this.user = "prueba";
             //this.user = "pruebaResident";
-            this.pass = "Jatabo29";
+            this.pass = "123";
             this.conexion = new SqlConnection();
             try
             {
                 //connection.ConnectionString = "Data Source=" & My.Computer.Name & "Initial Catalog=" & _database & ";uid=" & _user & ";pwd=" & _user & ";"
                 //connection.ConnectionString = "server=(local);database=" + dataBase + ";uid=" + user + ";pwd=" + pass + ";";
                 //Muy cómoda esta forma de escribir la cadena conStringFormat, metiendo los parametros entre llaves y asignandoselo tras la coma
-                this.conexion.ConnectionString = string.Format($"server=personasdbserver2.database.windows.net;database={dataBase};uid={user};pwd={pass};");
+                this.conexion.ConnectionString = string.Format($"server=localhost;database={dataBase};uid={user};pwd={pass};");
                 this.conexion.Open();
             }
             catch (SqlException)
