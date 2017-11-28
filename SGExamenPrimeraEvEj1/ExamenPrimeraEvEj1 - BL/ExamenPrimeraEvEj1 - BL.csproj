@@ -53,5 +53,8 @@
       <Name>ExamenPrimeraEvEj1 - ET</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Manejadoras\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
