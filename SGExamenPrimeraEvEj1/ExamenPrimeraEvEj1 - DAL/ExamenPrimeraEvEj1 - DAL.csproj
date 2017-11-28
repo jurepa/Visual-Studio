@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion\Connection.cs" />
+    <Compile Include="Listados\ListadoAlumnosDAL.cs" />
+    <Compile Include="Listados\ListadoCursosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

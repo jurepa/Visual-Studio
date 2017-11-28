@@ -33,7 +33,7 @@ namespace ExamenPrimeraEvEj1___DAL.Conexion
 
         public Connection()
         {
-            this.dataBase = "PersonasDB";
+            this.dataBase = "Becas";
             //El primer usuario es de de la base de datos del instituto, el segundo la de casa
             this.user = "prueba";
             //this.user = "pruebaResident";

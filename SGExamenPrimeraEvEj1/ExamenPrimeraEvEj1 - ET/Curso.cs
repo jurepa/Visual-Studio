@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExamenPrimeraEvEj1___ET
 {
-    public class Class1
+    public class Curso
     {
+        public int idCurso { get; set; }
+        public string nombreCurso { get; set; }
     }
 }

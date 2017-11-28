@@ -1,0 +1,79 @@
+﻿@model SGExamenPrimeraEvEj1.ViewModel.AlumnoConBecaInt
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditBeca</title>
+</head>
+<body>
+    <div>
+        <h4>Alumno</h4>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.alumno.idAlumno)
+                   @Html.HiddenFor(model => model.alumno.idAlumno, new { value = Model.alumno.idAlumno })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.alumno.idAlumno)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.alumno.nombreAlumno)
+                    @Html.HiddenFor(model => model.alumno.nombreAlumno, new { value = Model.alumno.nombreAlumno })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.alumno.nombreAlumno)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.alumno.apellidoAlumno)
+                    @Html.HiddenFor(model => model.alumno.apellidoAlumno, new { value = Model.alumno.apellidoAlumno })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.alumno.apellidoAlumno)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.alumno.beca)
+                </dt>
+
+                <dd>
+                    <input type="number" name="becaINT"/>@Html.ValidationMessageFor(model => model.becaINT)
+                    
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.alumno.idCurso)
+                    @Html.HiddenFor(model => model.alumno.idCurso, new { value = Model.alumno.idCurso })
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.alumno.idCurso)
+                </dd>
+
+            </dl>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar Beca" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        </div>
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </body>
+</html>

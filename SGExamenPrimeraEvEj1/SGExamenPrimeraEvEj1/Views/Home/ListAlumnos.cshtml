@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ExamenPrimeraEvEj1___ET.Alumno>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListAlumnos</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idAlumno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreAlumno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellidoAlumno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idCurso)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAlumno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreAlumno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoAlumno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idCurso)
+            </td>
+            <td>
+                @Html.ActionLink("Asignar Beca", "EditBeca", new {  idAlumno=item.idAlumno })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

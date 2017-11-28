@@ -21,8 +21,10 @@ namespace CRUD_Personas_UI.Controllers
         }
         public ActionResult Edit(int id)
         {
-            PersonaConListDepartamento vm = new PersonaConListDepartamento(id);
-            return View(vm);
+            PersonaConListDepartamento listPersona = new PersonaConListDepartamento();
+            ListadoPersonasBL listado = new ListadoPersonasBL();
+            listPersona.persona = listado.getPersona(id);
+            return View(listPersona);
         }
         [HttpPost]
         public ActionResult Edit(PersonaConListDepartamento p)
