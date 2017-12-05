@@ -38,7 +38,15 @@ namespace _17_CRUD_Personas_UWP_DAL
                         p.apellidos = (string)lector["apellidos"];
                         p.direccion = (string)lector["direccion"];
                         p.telefono = (string)lector["telefono"];
-                        p.idDepartamento = (int)lector["ID_Departamento"];
+                        if (lector["ID_Departamento"] == System.DBNull.Value)
+                        {
+
+                            p.idDepartamento = 0;
+                        }
+                        else
+                        {
+                            p.idDepartamento = (int)lector["ID_Departamento"]; ;
+                        }
                         this.listado.Add(p);
                     }
                 }

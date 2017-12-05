@@ -20,13 +20,14 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private DelegateCommand _delete;
         private DelegateCommand _addPersona;
         private DelegateCommand _savePersona;
+        private ListadoPersonasBL _listadoBL;
         //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
         public ListPersonaConPersonaSeleccionada()
         {
-            ListadoPersonasBL listado = new ListadoPersonasBL();
-            this._listado = new ObservableCollection<Persona>(listado.getListadoBL());
+            _listadoBL = new ListadoPersonasBL();
+            this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
             this._listadoAux = this._listado;
         }
         #endregion
@@ -71,7 +72,10 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 //_searchPersona.RaiseCanExecuteChanged();
                 if (String.IsNullOrWhiteSpace(_textoBusqueda))
                 {
-                    _listadoAux = _listado;
+
+                    _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                    _listadoAux = listado;
+                    NotifyPropertyChanged("listado");
                     NotifyPropertyChanged("listadoAux");
                 }
                 else
@@ -176,8 +180,9 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         public void ExecuteDelete()
         {
-            listadoAux.Remove(_personaSeleccionada);
-            listado.Remove(_personaSeleccionada); //No borra la persona seleccionada en el listado original, dnt know why
+            _listadoBL.deletePersona(_personaSeleccionada.idPersona);
+            _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+            _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
             NotifyPropertyChanged("listado");
             NotifyPropertyChanged("listadoAux");
         }
@@ -200,10 +205,22 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         {
             if (_personaSeleccionada.idPersona == 0)
             {
-                _personaSeleccionada.idPersona=listadoAux.ElementAt(listado.Count - 1).idPersona+1;
+                _personaSeleccionada.idPersona = listadoAux.ElementAt(listado.Count - 1).idPersona + 1;
+                _listadoBL.insertPersona(_personaSeleccionada);
+                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                _listadoAux = listado;
                 NotifyPropertyChanged("personaSeleccionada");
-                listadoAux.Add(_personaSeleccionada);
                 NotifyPropertyChanged("listadoAux");
+                NotifyPropertyChanged("listado");
+            }
+            else
+            {
+                _listadoBL.updatePersona(_personaSeleccionada);
+                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                _listadoAux = listado;
+                NotifyPropertyChanged("personaSeleccionada");
+                NotifyPropertyChanged("listadoAux");
+                NotifyPropertyChanged("listado");
             }
         }
 
