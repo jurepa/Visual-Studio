@@ -165,13 +165,12 @@ namespace ExamenPrimeraEv.ViewModel
         }
         public void Diferencia2_1_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            if (_elipsedif2img1 != 1)
+            Ellipse elipse = (Ellipse)sender;
+            if(elipse.Opacity!=1)
             {
-                _elipsedif2img1 = 1;
-                _diferenciasEncontradas++;
-                NotifyPropertyChanged("elipsedif2img1");
+                elipse.Opacity = 1;
+                diferenciasEncontradas++;
             }
-            mostrarVolverAJugarAsync();
         }
         public void Diferencia3_1_PointerPressed(object sender, PointerRoutedEventArgs e)
         {

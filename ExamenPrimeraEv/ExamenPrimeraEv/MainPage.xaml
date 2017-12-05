@@ -43,7 +43,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Ellipse Grid.Column="1" Grid.Row="2" Name="Diferencia1_1" Fill="Red" Opacity="{x:Bind vm.elipsedif1img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia1_1_PointerPressed}"/>
-            <Ellipse Grid.Column="5" Margin="0 20 40 0" Grid.Row="2" Name="Diferencia2_1" Fill="Red" Opacity="{x:Bind vm.elipsedif2img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia2_1_PointerPressed}" />
+            <Ellipse Grid.Column="5" Margin="0 20 40 0" Grid.Row="2" Name="Diferencia2_1" Fill="Transparent" Stroke="Red" StrokeThickness="10" Opacity="0" PointerPressed="{x:Bind vm.Diferencia2_1_PointerPressed}" />
             <Ellipse Grid.Column="6" Margin="0 20 30 0" Grid.Row="2" Name="Diferencia3_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif3img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia3_1_PointerPressed}"/>
             <Ellipse Grid.Column="7" HorizontalAlignment="Left" Width="50" Height="50" VerticalAlignment="Bottom" Grid.Row="2" Name="Diferencia4_1" Fill="Red" Opacity="{x:Bind vm.elipsedif4img1, Mode=TwoWay}" PointerPressed="{x:Bind vm.Diferencia4_1_PointerPressed}"/>
             <Ellipse Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="3" Name="Diferencia5_1" Fill="Red" Width="60" Opacity="{x:Bind vm.elipsedif5img1, Mode=TwoWay}" Height="60" PointerPressed="{x:Bind vm.Diferencia5_1_PointerPressed}"/>
