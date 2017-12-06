@@ -105,6 +105,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAPI - BL\WebAPI - BL.csproj">
+      <Project>{92ab876d-eeb6-4d3c-903f-cd15d2c25e4c}</Project>
+      <Name>WebAPI - BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAPI - ET\WebAPI - ET.csproj">
+      <Project>{2327e14c-1bea-49d0-acb7-0f6b504864d7}</Project>
+      <Name>WebAPI - ET</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
