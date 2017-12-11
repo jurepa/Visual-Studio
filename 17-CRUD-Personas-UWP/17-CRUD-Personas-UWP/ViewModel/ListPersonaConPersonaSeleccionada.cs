@@ -7,10 +7,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace _17_CRUD_Personas_UWP.ViewModel
 {
-    public class ListPersonaConPersonaSeleccionada :clsVMBase
+    public class ListPersonaConPersonaSeleccionada : clsVMBase
     {
         #region "Atributos"
         private ObservableCollection<Persona> _listado;
@@ -20,6 +21,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private DelegateCommand _delete;
         private DelegateCommand _addPersona;
         private DelegateCommand _savePersona;
+        private DelegateCommand _actualizarLista;
         private ListadoPersonasBL _listadoBL;
         //private DelegateCommand _searchPersona;
         #endregion
@@ -31,19 +33,32 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             this._listadoAux = this._listado;
         }
         #endregion
-        
+
         #region "Propiedades públicas"
         public DelegateCommand delete
         {
             get
             {
-                _delete= new DelegateCommand(ExecuteDelete, CanExecuteDelete);
+                _delete = new DelegateCommand(ExecuteDelete, CanExecuteDelete);
                 return _delete;
             }
 
             set
             {
                 _delete = value;
+            }
+        }
+        public DelegateCommand actualizarLista
+        {
+            get
+            {
+                _actualizarLista = new DelegateCommand(ExecuteActualizarLista);
+                return _actualizarLista;
+            }
+
+            set
+            {
+                _actualizarLista = value;
             }
         }
         public ObservableCollection<Persona> listadoAux
@@ -100,7 +115,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         {
             get
             {
-                _savePersona = new DelegateCommand(ExecuteSavePersona);
+                _savePersona = new DelegateCommand(ExecuteSavePersona, CanExecuteSavePersona);
                 return _savePersona;
             }
             set
@@ -108,23 +123,28 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _savePersona = value;
             }
         }
-       /* public DelegateCommand searchPersona
-        {
-            get
-            {
-                _searchPersona = new DelegateCommand(ExecuteSearchPersona,CanExecuteSearchPersona);
-                return _searchPersona;
-                
-            }
+        /* public DelegateCommand searchPersona
+         {
+             get
+             {
+                 _searchPersona = new DelegateCommand(ExecuteSearchPersona,CanExecuteSearchPersona);
+                 return _searchPersona;
 
-            set
-            {
-                _searchPersona = value;
-            }
-        }*/
+             }
+
+             set
+             {
+                 _searchPersona = value;
+             }
+         }*/
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
+
+            set
+            {
+                _listado = value;
+            }
         }
         public Persona personaSeleccionada
         {
@@ -134,6 +154,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _personaSeleccionada = value;
                 _delete.RaiseCanExecuteChanged();
                 _savePersona.RaiseCanExecuteChanged();
+
                 //Notificación de cambio a la vista
                 NotifyPropertyChanged("personaSeleccionada");
             }
@@ -144,19 +165,30 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             bool canExecute = false;
             if (_personaSeleccionada != null)
             {
-                canExecute = true;
+                if (!String.IsNullOrEmpty(_personaSeleccionada.nombre))
+                {
+                    canExecute = true;
+                }
+
             }
             return canExecute;
         }
 
+        private void ExecuteActualizarLista()
+        {
+            listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+            listadoAux = this._listado;
+            NotifyPropertyChanged("listado");
+            NotifyPropertyChanged("listadoAux");
+        }
         public void ExecuteSearchPersona()
         {
             listadoAux = new ObservableCollection<Persona>();
             NotifyPropertyChanged("listadoAux");
-            string nombre=null;
+            string nombre = null;
             for (int i = 0; i < _listado.Count; i++)
             {
-                nombre =_listado.ElementAt(i).nombre.ToLower();
+                nombre = _listado.ElementAt(i).nombre.ToLower();
                 if (nombre.Contains(textoBusqueda.ToLower()))
                 {
                     listadoAux.Add(_listado.ElementAt(i));
@@ -180,15 +212,11 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         public void ExecuteDelete()
         {
-            _listadoBL.deletePersona(_personaSeleccionada.idPersona);
-            _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
-            _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
-            NotifyPropertyChanged("listado");
-            NotifyPropertyChanged("listadoAux");
+            mostrarSeguroDelete();
         }
         public void ExecuteAddPersona()
         {
-            _personaSeleccionada = new Persona();
+            personaSeleccionada = new Persona();
             NotifyPropertyChanged("personaSeleccionada");
         }
         //private bool canExecuteSavePersona()
@@ -209,9 +237,9 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _listadoBL.insertPersona(_personaSeleccionada);
                 _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
                 _listadoAux = listado;
-                NotifyPropertyChanged("personaSeleccionada");
-                NotifyPropertyChanged("listadoAux");
-                NotifyPropertyChanged("listado");
+                //NotifyPropertyChanged("personaSeleccionada");
+                //NotifyPropertyChanged("listadoAux");
+                //NotifyPropertyChanged("listado");
             }
             else
             {
@@ -219,11 +247,19 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
                 _listadoAux = listado;
                 NotifyPropertyChanged("personaSeleccionada");
-                NotifyPropertyChanged("listadoAux");
-                NotifyPropertyChanged("listado");
+                //NotifyPropertyChanged("listadoAux");
+                //NotifyPropertyChanged("listado");
             }
         }
-
+        private bool CanExecuteSavePersona()
+        {
+            bool sePuede = false;
+            if (_personaSeleccionada != null)
+            {
+                sePuede = true;
+            }
+            return sePuede;
+        }
         private void buscaPersona()
         {
             _listadoAux = new ObservableCollection<Persona>();
@@ -237,6 +273,25 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                     _listadoAux.Add(_listado.ElementAt(i));
                     NotifyPropertyChanged("listadoAux");
                 }
+            }
+
+        }
+        public async void mostrarSeguroDelete()
+        {
+
+            ContentDialog volverAJugar = new ContentDialog();
+            volverAJugar.Title = "Eliminar";
+            volverAJugar.Content = $"¿Está seguro de que de que desea eliminar el usuario {_personaSeleccionada.nombre} {_personaSeleccionada.apellidos}?";
+            volverAJugar.PrimaryButtonText = "Si";
+            volverAJugar.SecondaryButtonText = "No";
+            ContentDialogResult resultado = await volverAJugar.ShowAsync();
+            if (resultado == ContentDialogResult.Primary)
+            {
+                _listadoBL.deletePersona(_personaSeleccionada.idPersona);
+                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
+                //NotifyPropertyChanged("listado");
+                //NotifyPropertyChanged("listadoAux");
             }
 
         }
