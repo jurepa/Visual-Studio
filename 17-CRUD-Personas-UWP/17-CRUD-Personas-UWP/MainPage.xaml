@@ -82,7 +82,7 @@
                 <AppBarButton Icon="Add" Label="Añadir" Command="{Binding addPersona}"/>
                 <TextBox Name="busqueda" Margin="10" PlaceholderText="Search..." Width="200" Height="10" VerticalAlignment="Top" Text="{Binding textoBusqueda,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                 <AppBarButton Icon="Refresh" Label="Actualizar lista" Command="{Binding actualizarLista }"/>
-                <TextBlock Name="txtTemporizador" FontSize="20" Text="{Binding}"/>
+                <TextBlock Name="txtTemporizador" FontSize="20" Text="{Binding textoReloj, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <TextBlock Text="Nombre: " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
             <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.nombre,Mode=TwoWay}"/>

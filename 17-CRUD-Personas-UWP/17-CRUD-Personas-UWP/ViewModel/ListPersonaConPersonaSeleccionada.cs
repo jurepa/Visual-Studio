@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace _17_CRUD_Personas_UWP.ViewModel
@@ -23,6 +25,9 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private DelegateCommand _savePersona;
         private DelegateCommand _actualizarLista;
         private ListadoPersonasBL _listadoBL;
+        private string _textoReloj;
+        private DispatcherTimer timer;
+        public Stopwatch miReloj = new Stopwatch();
         //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
@@ -31,6 +36,12 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             _listadoBL = new ListadoPersonasBL();
             this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
             this._listadoAux = this._listado;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+            miReloj.Start();
         }
         #endregion
 
@@ -137,6 +148,14 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                  _searchPersona = value;
              }
          }*/
+        public string textoReloj
+        {
+            get { return _textoReloj; }
+            set
+            {
+                _textoReloj = value;
+            }
+        }
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
@@ -294,6 +313,10 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 //NotifyPropertyChanged("listadoAux");
             }
 
+        }
+        private void timer_Tick(object sender, object e)
+        {
+            textoReloj = string.Format("{0}:{1}:{2}", miReloj.Elapsed.Hours.ToString(), miReloj.Elapsed.Minutes.ToString(), miReloj.Elapsed.Seconds.ToString());
         }
     }
 }
