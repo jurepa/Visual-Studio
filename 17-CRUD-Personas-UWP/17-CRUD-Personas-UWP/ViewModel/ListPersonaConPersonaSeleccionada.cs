@@ -27,7 +27,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private ListadoPersonasBL _listadoBL;
         private string _textoReloj;
         private DispatcherTimer timer;
-        public Stopwatch miReloj = new Stopwatch();
+        private int _segundos;
         //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
@@ -37,11 +37,10 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
             this._listadoAux = this._listado;
             timer = new DispatcherTimer();
+            _segundos = 30;
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-
-            miReloj.Start();
         }
         #endregion
 
@@ -316,7 +315,26 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         private void timer_Tick(object sender, object e)
         {
-            textoReloj = string.Format("{0}:{1}:{2}", miReloj.Elapsed.Hours.ToString(), miReloj.Elapsed.Minutes.ToString(), miReloj.Elapsed.Seconds.ToString());
+            _segundos--;
+            if (_segundos >= 10)
+            {
+                _textoReloj = $"0:{_segundos.ToString()}";
+                NotifyPropertyChanged("textoReloj");
+            }
+            else
+            {
+                _textoReloj = $"0:0{_segundos.ToString()}";
+                NotifyPropertyChanged("textoReloj");
+            }
+            if (_segundos == 0)
+            {
+                _listadoBL = new ListadoPersonasBL();
+                this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                this._listadoAux = this._listado;
+                NotifyPropertyChanged("listado");
+                NotifyPropertyChanged("listadoAux");
+                _segundos = 30;
+            }
         }
     }
 }
