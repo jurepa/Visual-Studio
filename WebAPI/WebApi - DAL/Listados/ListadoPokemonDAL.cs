@@ -17,6 +17,10 @@ namespace WebApi___DAL.Listados
         {
             this.listado = new List<Pokemon>();
         }
+        /// <summary>
+        /// Este método se encarga de leer la tabla entera de pokemons de la base de datos
+        /// </summary>
+        /// <returns>Un List de Pokemon</returns>
         public List<Pokemon> getPokemons()
         {
             Connection cx = new Connection();
@@ -36,7 +40,8 @@ namespace WebApi___DAL.Listados
                         p = new Pokemon();
                         p.idPokemon = (int)lector["idPokemon"];
                         p.nombrePokemon = (string)lector["nombrePokemon"];
-                        p.numEvoluciones = (int)lector["numEvoluciones"];
+                        p.numEvoluciones = (Byte)lector["numEvoluciones"];
+                        p.generacion = (Byte)lector["Generacion"];
                         p.habilidad1 = (string)lector["Habilidad1"];
                         if (lector["Habilidad2"] == System.DBNull.Value)
                         {
@@ -69,6 +74,11 @@ namespace WebApi___DAL.Listados
 
             return this.listado;
         }
+        /// <summary>
+        /// Este método devuelve un pokemon dependiendo el id pasado
+        /// </summary>
+        /// <param name="id">El id del pokemon</param>
+        /// <returns>Un objeto pokemon</returns>
         public Pokemon getPokemon(int id)
         {
             Connection cx = new Connection();
@@ -92,7 +102,8 @@ namespace WebApi___DAL.Listados
                     p = new Pokemon();
                     p.idPokemon = (int)lector["idPokemon"];
                     p.nombrePokemon = (string)lector["nombrePokemon"];
-                    p.numEvoluciones = (int)lector["numEvoluciones"];
+                    p.numEvoluciones = (Byte)lector["numEvoluciones"];
+                    p.generacion = (Byte)lector["Generacion"];
                     p.habilidad1 = (string)lector["Habilidad1"];
                     if (lector["Habilidad2"] == System.DBNull.Value)
                     {
@@ -124,14 +135,17 @@ namespace WebApi___DAL.Listados
 
             return p;
         }
-
-        public void updatePokemon(Pokemon p)
+        /// <summary>
+        /// Este método se encarga de actualizar un pokemon de la base de datos
+        /// </summary>
+        /// <param name="p">Un objeto pokemon</param>
+        public void updatePokemon(int id, Pokemon p)
         {
             Connection cx = new Connection();
             SqlCommand consulta = new SqlCommand();
             SqlParameter nombrePokemon = new SqlParameter();
             SqlParameter habitat = new SqlParameter();
-            SqlParameter id = new SqlParameter();
+            SqlParameter idPokemon = new SqlParameter();
             SqlParameter habilidad1 = new SqlParameter();
             SqlParameter habilidad2 = new SqlParameter();
             SqlParameter habilidadOculta = new SqlParameter();
@@ -150,8 +164,8 @@ namespace WebApi___DAL.Listados
                 numEvoluciones.Value = p.numEvoluciones;
 
                 generacion.ParameterName = "@generacion";
-                generacion.SqlDbType = System.Data.SqlDbType.NVarChar;
-                generacion.Value = p.nombrePokemon;
+                generacion.SqlDbType = System.Data.SqlDbType.TinyInt;
+                generacion.Value = p.generacion;
 
                 habitat.ParameterName = "@habitat";
                 habitat.SqlDbType = System.Data.SqlDbType.NVarChar;
@@ -177,9 +191,9 @@ namespace WebApi___DAL.Listados
                 altura.SqlDbType = System.Data.SqlDbType.Float;
                 altura.Value = p.altura;
 
-                id.ParameterName = "@idPokemon";
-                id.SqlDbType = System.Data.SqlDbType.Int;
-                id.Value = p.idPokemon;
+                idPokemon.ParameterName = "@idPokemon";
+                idPokemon.SqlDbType = System.Data.SqlDbType.Int;
+                idPokemon.Value = id;
 
                 consulta.Parameters.Add(nombrePokemon);
                 consulta.Parameters.Add(habitat);
@@ -188,7 +202,7 @@ namespace WebApi___DAL.Listados
                 consulta.Parameters.Add(habilidadOculta);
                 consulta.Parameters.Add(peso);
                 consulta.Parameters.Add(altura);
-                consulta.Parameters.Add(id);
+                consulta.Parameters.Add(idPokemon);
                 consulta.Parameters.Add(numEvoluciones);
                 consulta.Parameters.Add(generacion);
                 consulta.CommandText = "Update Pokemons" +
@@ -202,6 +216,10 @@ namespace WebApi___DAL.Listados
                 throw;
             }
         }
+        /// <summary>
+        /// Este método se encarga de borrar un pokemon de la base de datos
+        /// </summary>
+        /// <param name="id">El id del pokemon</param>
         public void deletePokemon(int id)
         {
             Connection cx = new Connection();
@@ -227,6 +245,10 @@ namespace WebApi___DAL.Listados
                 throw;
             }
         }
+        /// <summary>
+        /// Este método se encarga de insertar un pokemon en la base de datos
+        /// </summary>
+        /// <param name="p">Un objeto pokemon</param>
         public void insertPokemon(Pokemon p)
         {
             Connection cx = new Connection();
@@ -280,8 +302,8 @@ namespace WebApi___DAL.Listados
                 numEvoluciones.Value = p.numEvoluciones;
 
                 generacion.ParameterName = "@generacion";
-                generacion.SqlDbType = System.Data.SqlDbType.NVarChar;
-                generacion.Value = p.nombrePokemon;
+                generacion.SqlDbType = System.Data.SqlDbType.TinyInt;
+                generacion.Value = p.generacion;
 
                 consulta.Parameters.Add(nombrePokemon);
                 consulta.Parameters.Add(habitat);
@@ -293,8 +315,7 @@ namespace WebApi___DAL.Listados
                 consulta.Parameters.Add(id);
                 consulta.Parameters.Add(numEvoluciones);
                 consulta.Parameters.Add(generacion);
-                consulta.CommandText = "INSERT INTO Pokemons(nombrePokemon,numEvoluciones,Generacion,Habilidad1,Habilidad2,HabilidadOculta,Peso,Altura,Hábitat) VALUES (@nombre,@numEvoluciones,@generacion," +
-                    "@habilidad1,@habilidad2,@habilidadOculta,@peso,@altura,@habitat)";
+                consulta.CommandText = "INSERT INTO Pokemons(nombrePokemon,numEvoluciones,Generacion,Habilidad1,Habilidad2,HabilidadOculta,Peso,Altura,Hábitat) VALUES (@nombrePokemon,@numEvoluciones,@generacion, @habilidad1,@habilidad2,@habilidadOculta,@peso,@altura,@habitat)";
                 consulta.Connection = cx.conexion;
                 consulta.ExecuteNonQuery();
                 cx.closeConnection();

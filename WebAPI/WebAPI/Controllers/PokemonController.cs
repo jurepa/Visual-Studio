@@ -36,14 +36,24 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/Pokemon/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Pokemon value)
         {
-
+            ListadoPokemonBL listado = new ListadoPokemonBL();
+            if (listado.getPokemon(id)==null)
+            {
+                listado.insertPokemon(value);
+            }
+            else
+            {
+                listado.updatePokemon(id,value);
+            }
         }
 
         // DELETE: api/Pokemon/5
         public void Delete(int id)
         {
+            ListadoPokemonBL listado = new ListadoPokemonBL();
+            listado.deletePokemon(id);
         }
     }
 }

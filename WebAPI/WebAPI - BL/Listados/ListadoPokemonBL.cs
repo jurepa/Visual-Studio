@@ -26,10 +26,10 @@ namespace WebAPI___BL.Listados
             return PokemonUI;
         }
 
-        public void updatePokemon(Pokemon p)
+        public void updatePokemon(int id, Pokemon p)
         {
             ListadoPokemonDAL listado = new ListadoPokemonDAL();
-            listado.updatePokemon(p);
+            listado.updatePokemon(id,p);
         } 
         public void deletePokemon(int id)
         {

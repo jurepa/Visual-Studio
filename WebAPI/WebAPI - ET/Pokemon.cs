@@ -13,9 +13,9 @@ namespace WebAPI___ET
         [Required(ErrorMessage ="Campo requerido")]
         public string nombrePokemon { get; set; }
         [Required(ErrorMessage ="Campo Requerido"), Range(minimum:0,maximum:3)]
-        public int numEvoluciones { get; set; }
+        public Byte numEvoluciones { get; set; }
         [Required(ErrorMessage ="El pokemon debe tener una generación"), Range(minimum:1,maximum:7,ErrorMessage ="Elige una generación de la 1 a la 7")]
-        public int generacion { get; set; }
+        public Byte generacion { get; set; }
         [Required(ErrorMessage ="El pokemon debe tener al menos una habilidad")]
         public string habilidad1 { get; set; }
         public string habilidad2 { get; set; }
