@@ -1,0 +1,4 @@
+personasdbserver2:
+	admin-> pjarana, Jatabo29
+http://crud-personas-ui20171127012114.azurewebsites.net/
+http://bestpokemonapi.azurewebsites.net/
