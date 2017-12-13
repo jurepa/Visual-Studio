@@ -40,7 +40,6 @@ namespace _17_CRUD_Personas_UWP_DAL
                         p.telefono = (string)lector["telefono"];
                         if (lector["ID_Departamento"] == System.DBNull.Value)
                         {
-
                             p.idDepartamento = 0;
                         }
                         else

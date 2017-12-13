@@ -34,6 +34,7 @@ namespace SGExamenPrimeraEvEj1.Controllers
             List<Alumno> listaFiltrada = listadoAlumnos.getListadoAlumnosCursoBL(listado.idCursoSeleccionado);
             return View("ListAlumnos", listaFiltrada);
         }
+
         /// <summary>
         /// Método que se ejecuta al pulsar en el enlace Asignar Beca, lo que hace es devolver una vista con los datos
         /// del alumno y un campo de texto inputType number para editar la beca
