@@ -105,7 +105,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 }
                 else
                 {
-                    buscaPersona();
+                    ExecuteSearchPersona();
                 }
             }
         }
@@ -198,21 +198,26 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             listadoAux = this._listado;
             NotifyPropertyChanged("listado");
             NotifyPropertyChanged("listadoAux");
+            _segundos = 30;
         }
         public void ExecuteSearchPersona()
         {
             listadoAux = new ObservableCollection<Persona>();
             NotifyPropertyChanged("listadoAux");
-            string nombre = null;
-            for (int i = 0; i < _listado.Count; i++)
-            {
-                nombre = _listado.ElementAt(i).nombre.ToLower();
-                if (nombre.Contains(textoBusqueda.ToLower()))
-                {
-                    listadoAux.Add(_listado.ElementAt(i));
-                    NotifyPropertyChanged("listadoAux");
-                }
-            }
+            //string nombre = null;
+            //for (int i = 0; i < _listado.Count; i++)
+            //{
+            //    nombre = _listado.ElementAt(i).nombre.ToLower();
+            //    if (nombre.Contains(textoBusqueda.ToLower()))
+            //    {
+            //        listadoAux.Add(_listado.ElementAt(i));
+            //        NotifyPropertyChanged("listadoAux");
+            //    }
+            //}
+            IEnumerable<Persona> listadito = from persona in _listado where persona.nombre.ToLower().Contains(_textoBusqueda.ToLower())||persona.apellidos.ToLower().Contains(_textoBusqueda.ToLower()) select persona;
+
+            listadoAux =new ObservableCollection<Persona>( listadito);
+            NotifyPropertyChanged("listadoAux");
         }
         public bool CanExecuteSearchPersona()
         {
@@ -333,6 +338,10 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 this._listadoAux = this._listado;
                 NotifyPropertyChanged("listado");
                 NotifyPropertyChanged("listadoAux");
+                if (!String.IsNullOrEmpty(_textoBusqueda))
+                {
+                    ExecuteSearchPersona();
+                }
                 _segundos = 30;
             }
         }
