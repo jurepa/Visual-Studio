@@ -1,0 +1,20 @@
+﻿<Application
+    x:Class="BotonesResources.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BotonesResources"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary x:Key="btn2">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DictionaryBtn2.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <LinearGradientBrush x:Key="btn3">
+                <GradientStop Offset="0" Color="Green"/>
+                <GradientStop Offset="0.5" Color="Azure"/>
+                <GradientStop Offset="1" Color="Orange"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

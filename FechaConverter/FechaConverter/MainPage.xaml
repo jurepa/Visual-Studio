@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="FechaConverter.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FechaConverter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:VM="using:FechaConverter.ViewModel"
+    xmlns:Converter="using:FechaConverter.Converter">
+    <Page.Resources>
+        <LinearGradientBrush x:Key="stackBackground">
+            <GradientStop Offset="0" Color="LightSalmon"></GradientStop>
+            <GradientStop Offset="1" Color="BlanchedAlmond"></GradientStop>
+        </LinearGradientBrush>
+        <Converter:ConverterFecha x:Key="ConverterFecha"></Converter:ConverterFecha>
+    </Page.Resources>
+    <Page.DataContext>
+        <VM:MainPageVM></VM:MainPageVM>
+        
+    </Page.DataContext>
+    <StackPanel Orientation="Vertical" Background="{StaticResource stackBackground}">
+        <DatePicker Name="fecha" Date="{Binding fechaDatePicker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"></DatePicker>
+        <TextBox Name="textoFecha" Text="{Binding ElementName=fecha, Path=Date}" HorizontalAlignment="Center"></TextBox>
+    </StackPanel>
+</Page>
