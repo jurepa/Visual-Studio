@@ -21,6 +21,6 @@
     </Page.DataContext>
     <StackPanel Orientation="Vertical" Background="{StaticResource stackBackground}">
         <DatePicker Name="fecha" Date="{Binding fechaDatePicker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"></DatePicker>
-        <TextBox Name="textoFecha" Text="{Binding ElementName=fecha, Path=Date}" HorizontalAlignment="Center"></TextBox>
+        <TextBox Name="textoFecha" Text="{Binding textoFecha, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></TextBox>
     </StackPanel>
 </Page>
