@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="StylesBtn.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StylesBtn"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Control.FontFamily" Value="Times New Roman" />
+            <Setter Property="Control.FontSize" Value="18" />
+            <Setter Property="Control.FontWeight" Value="Bold" />
+            <Setter Property="Control.Background" Value="Beige"/>
+            <Setter Property="Control.Padding" Value="10"/>
+            <Setter Property="Control.Margin" Value="20"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Button3Style" BasedOn="{StaticResource ButtonStyle}" TargetType="Button">
+            <Setter Property="Control.Foreground" Value="Green"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform Angle="25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <StackPanel Orientation="Vertical" >
+        <Button Name="btn1" Content="Boton 1" Style="{StaticResource ButtonStyle}"/>
+        <Button Name="btn2" Content="Boton 2" Style="{StaticResource ButtonStyle}"/>
+        <Button Name="btn3" Content="Boton 3" Style="{StaticResource Button3Style}"/>
+    </StackPanel>
+</Page>
