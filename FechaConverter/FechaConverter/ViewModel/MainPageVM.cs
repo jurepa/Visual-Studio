@@ -12,7 +12,7 @@ namespace FechaConverter.ViewModel
         private DateTimeOffset _fechaDatePicker { get; set; }
         public MainPageVM()
         {
-            _fechaDatePicker = DateTimeOffset.Now;
+            fechaDatePicker = DateTimeOffset.Now;
             NotifyPropertyChanged("fechaDatePicker");
         }
         public string textoFecha
@@ -26,8 +26,8 @@ namespace FechaConverter.ViewModel
             {
                 _textoFecha = value;
                 NotifyPropertyChanged("textoFecha");
-                _fechaDatePicker = DateTimeOffset.Parse(_textoFecha);
-                NotifyPropertyChanged("fechaDatePicker");
+                //_fechaDatePicker = DateTimeOffset.Parse(_textoFecha);
+                //NotifyPropertyChanged("fechaDatePicker");
             }
         }
         public DateTimeOffset fechaDatePicker
@@ -39,8 +39,6 @@ namespace FechaConverter.ViewModel
             set
             {
                 _fechaDatePicker = value;
-                _textoFecha = _fechaDatePicker.ToString();
-                NotifyPropertyChanged("textoFecha");
                 NotifyPropertyChanged("fechaDatePicker");
             }
         }
