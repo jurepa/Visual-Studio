@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 
 namespace ListaPersonas.ViewModel
 {
-    public class ListPersonaConPersonaSeleccionada :INotifyPropertyChanged
+    public class ListPersonaConPersonaSeleccionada : INotifyPropertyChanged
     {
         #region "Atributos"
         private ObservableCollection<Persona> _listado;
@@ -25,20 +25,22 @@ namespace ListaPersonas.ViewModel
             this._listado = lista.listado;
         }
         #endregion
-        
+
         #region "Propiedades públicas"
         public ObservableCollection<Persona> listado
         {
             get { return _listado; }
         }
-        public int indicePersonaSeleccionada
+        public int indicePersonaSeleccionada //No lo uso pa na, pero bueno ahí está
         {
-            get {
-                return _indicePersonaSeleccionada; }
+            get
+            {
+                return _indicePersonaSeleccionada;
+            }
             set
             {
                 _indicePersonaSeleccionada = value;
-                //NotifyPropertyChanged("indicePersonaSeleccionada");
+                NotifyPropertyChanged("indicePersonaSeleccionada");
             }
         }
         public Persona personaSeleccionada
@@ -46,9 +48,13 @@ namespace ListaPersonas.ViewModel
             get { return _personaSeleccionada; }
             set
             {
-                _personaSeleccionada = value;
-                //Notificación de cambio a la vista
-                NotifyPropertyChanged("personaSeleccionada");
+                if (_personaSeleccionada != value)
+                {
+                    _personaSeleccionada = value;
+                    //Notificación de cambio a la vista
+                    NotifyPropertyChanged("personaSeleccionada");
+                }
+
             }
         }
         #endregion

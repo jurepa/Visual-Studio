@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConverterPersona.cs" />
     <Compile Include="Models\ListPersona.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="ViewModel\ListPersonaConPersonaSeleccionada.cs" />

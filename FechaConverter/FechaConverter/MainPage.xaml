@@ -14,13 +14,12 @@
             <GradientStop Offset="1" Color="BlanchedAlmond"></GradientStop>
         </LinearGradientBrush>
         <Converter:ConverterFecha x:Key="ConverterFecha"></Converter:ConverterFecha>
-        <Converter:ConverterStringToFecha x:Key="ConverterStringToFecha"></Converter:ConverterStringToFecha>
     </Page.Resources>
     <Page.DataContext>
         <VM:MainPageVM></VM:MainPageVM>
     </Page.DataContext>
     <StackPanel Orientation="Vertical" Background="{StaticResource stackBackground}">
-        <DatePicker Name="fecha" Date="{Binding fechaDatePicker,Converter={StaticResource ConverterStringToFecha}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"></DatePicker>
+        <DatePicker Name="fecha" Date="{Binding fechaDatePicker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"></DatePicker>
         <TextBox Name="textoFecha" Text="{Binding fechaDatePicker,Converter={StaticResource ConverterFecha}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></TextBox>
     </StackPanel>
 </Page>
