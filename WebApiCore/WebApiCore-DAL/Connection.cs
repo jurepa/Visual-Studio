@@ -44,7 +44,7 @@ namespace WebApiCore_DAL
                 //connection.ConnectionString = "Data Source=" & My.Computer.Name & "Initial Catalog=" & _database & ";uid=" & _user & ";pwd=" & _user & ";"
                 //connection.ConnectionString = "server=(local);database=" + dataBase + ";uid=" + user + ";pwd=" + pass + ";";
                 //Muy cómoda esta forma de escribir la cadena conStringFormat, metiendo los parametros entre llaves y asignandoselo tras la coma
-                this.conexion.ConnectionString = string.Format($"server=localhost;database={dataBase};uid={user};pwd={pass};");
+                this.conexion.ConnectionString = $"server=localhost;database={dataBase};uid={user};pwd={pass};";
                 this.conexion.Open();
             }
             catch (SqlException)
