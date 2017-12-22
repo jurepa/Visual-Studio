@@ -255,7 +255,6 @@ namespace WebApi___DAL.Listados
             SqlCommand consulta = new SqlCommand();
             SqlParameter nombrePokemon = new SqlParameter();
             SqlParameter habitat = new SqlParameter();
-            SqlParameter id = new SqlParameter();
             SqlParameter habilidad1 = new SqlParameter();
             SqlParameter habilidad2 = new SqlParameter();
             SqlParameter habilidadOculta = new SqlParameter();
@@ -293,10 +292,6 @@ namespace WebApi___DAL.Listados
                 altura.SqlDbType = System.Data.SqlDbType.Float;
                 altura.Value = p.altura;
 
-                id.ParameterName = "@idPokemon";
-                id.SqlDbType = System.Data.SqlDbType.Int;
-                id.Value = p.idPokemon;
-
                 numEvoluciones.ParameterName = "@numEvoluciones";
                 numEvoluciones.SqlDbType = System.Data.SqlDbType.TinyInt;
                 numEvoluciones.Value = p.numEvoluciones;
@@ -312,7 +307,6 @@ namespace WebApi___DAL.Listados
                 consulta.Parameters.Add(habilidadOculta);
                 consulta.Parameters.Add(peso);
                 consulta.Parameters.Add(altura);
-                consulta.Parameters.Add(id);
                 consulta.Parameters.Add(numEvoluciones);
                 consulta.Parameters.Add(generacion);
                 consulta.CommandText = "INSERT INTO Pokemons(nombrePokemon,numEvoluciones,Generacion,Habilidad1,Habilidad2,HabilidadOculta,Peso,Altura,Hábitat) VALUES (@nombrePokemon,@numEvoluciones,@generacion, @habilidad1,@habilidad2,@habilidadOculta,@peso,@altura,@habitat)";
