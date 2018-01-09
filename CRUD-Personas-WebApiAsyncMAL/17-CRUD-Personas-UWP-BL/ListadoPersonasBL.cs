@@ -11,10 +11,10 @@ namespace _17_CRUD_Personas_UWP_BL
 {
     public class ListadoPersonasBL
     {
-        public List<Persona> getListadoBL()
+        public async Task<List<Persona>> getListadoBL()
         {
             ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
-            List<Persona> listadoParaUI = listadoPersonas.getPersonas();
+            List<Persona> listadoParaUI = await listadoPersonas.getPersonas();
             
             return listadoParaUI;
         }

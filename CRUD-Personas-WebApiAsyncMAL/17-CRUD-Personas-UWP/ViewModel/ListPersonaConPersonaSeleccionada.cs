@@ -28,13 +28,15 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private string _textoReloj;
         private DispatcherTimer timer;
         private int _segundos;
+        private bool _activo;
         //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
         public ListPersonaConPersonaSeleccionada()
         {
+            activo = true;
             _listadoBL = new ListadoPersonasBL();
-            this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+            cargarLista();
             this._listadoAux = this._listado;
             timer = new DispatcherTimer();
             _segundos = 30;
@@ -45,6 +47,15 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         #endregion
 
         #region "Propiedades públicas"
+
+        public bool activo
+        {
+            get { return _activo; }
+            set {
+                    _activo = value;
+                    NotifyPropertyChanged("activo");
+                }
+        }
         public DelegateCommand delete
         {
             get
@@ -98,7 +109,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 if (String.IsNullOrWhiteSpace(_textoBusqueda))
                 {
 
-                    _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                    cargarLista();
                     _listadoAux = listado;
                     NotifyPropertyChanged("listado");
                     NotifyPropertyChanged("listadoAux");
@@ -194,7 +205,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
 
         private void ExecuteActualizarLista()
         {
-            listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+            activo = true;
+            cargarLista();
             listadoAux = this._listado;
             NotifyPropertyChanged("listado");
             NotifyPropertyChanged("listadoAux");
@@ -258,7 +270,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             {
                 _personaSeleccionada.idPersona = listadoAux.ElementAt(listado.Count - 1).idPersona + 1;
                 _listadoBL.insertPersona(_personaSeleccionada);
-                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                cargarLista();
                 _listadoAux = listado;
                 //NotifyPropertyChanged("personaSeleccionada");
                 //NotifyPropertyChanged("listadoAux");
@@ -267,7 +279,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             else
             {
                 _listadoBL.updatePersona(_personaSeleccionada);
-                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                activo = true;
+                cargarLista();
                 _listadoAux = listado;
                 NotifyPropertyChanged("personaSeleccionada");
                 //NotifyPropertyChanged("listadoAux");
@@ -311,7 +324,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             if (resultado == ContentDialogResult.Primary)
             {
                 _listadoBL.deletePersona(_personaSeleccionada.idPersona);
-                _listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                activo = true;
+                cargarLista();
                 _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
                 //NotifyPropertyChanged("listado");
                 //NotifyPropertyChanged("listadoAux");
@@ -334,7 +348,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             if (_segundos == 0)
             {
                 _listadoBL = new ListadoPersonasBL();
-                this._listado = new ObservableCollection<Persona>(_listadoBL.getListadoBL());
+                activo = true;
+                cargarLista();
                 this._listadoAux = this._listado;
                 NotifyPropertyChanged("listado");
                 NotifyPropertyChanged("listadoAux");
@@ -344,6 +359,12 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 }
                 _segundos = 30;
             }
+        }
+        private async void cargarLista()
+        {
+            this._listado = new ObservableCollection<Persona>(await _listadoBL.getListadoBL());
+            NotifyPropertyChanged("listado");
+            activo = false;
         }
     }
 }

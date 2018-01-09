@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using _17_CRUD_Personas_UWP_ET;
 using Windows.Web.Http;
+using Newtonsoft.Json;
 
 namespace _17_CRUD_Personas_UWP_DAL
 {
@@ -23,9 +24,9 @@ namespace _17_CRUD_Personas_UWP_DAL
             HttpClient httpClient = new HttpClient();
             try
             {
-                Task<string> stringJson = httpClient.GetStringAsync(connection.uri);
-                string listadoo = await stringJson;
-                //string listadoJson =await httpClient.GetStringAsync(connection.uri);
+                //Task<string> stringJson = httpClient.GetStringAsync(connection.uri);
+                //string listadoo = await stringJson;
+                string listadoJson =await httpClient.GetStringAsync(connection.uri);
 
                 httpClient.Dispose();
                 this.listado = JsonConvert.DeserializeObject<List<Persona>>(listadoJson);

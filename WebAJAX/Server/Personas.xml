@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<personas>
+  <persona>
+    <nombre>Pablo</nombre>
+    <apellidos>Jarana García</apellidos>
+  </persona>
+  <persona>
+    <nombre>Ivan</nombre>
+    <apellidos>AndGo</apellidos>
+  </persona>
+</personas>
