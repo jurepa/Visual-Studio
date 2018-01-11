@@ -12,13 +12,13 @@ namespace _17_CRUD_Personas_UWP_DAL
 {
     public class ListadoPersonasDAL
     {
-        public List<Persona> listado { get; set; }
+        public List<Pokemon> listado { get; set; }
 
         public ListadoPersonasDAL()
         {
-            this.listado = new List<Persona>();
+            this.listado = new List<Pokemon>();
         }
-        public async Task<List<Persona>> getPersonas()
+        public async Task<List<Pokemon>> getPersonas()
         {
             Connection connection = new Connection();
             HttpClient httpClient = new HttpClient();
@@ -26,28 +26,28 @@ namespace _17_CRUD_Personas_UWP_DAL
             {
                 //Task<string> stringJson = httpClient.GetStringAsync(connection.uri);
                 //string listadoo = await stringJson;
-                string listadoJson =await httpClient.GetStringAsync(connection.uri);
+                string listadoJson =await httpClient.GetStringAsync(new Uri(connection.uri+"api/pokemon"));
 
                 httpClient.Dispose();
-                this.listado = JsonConvert.DeserializeObject<List<Persona>>(listadoJson);
+                this.listado = JsonConvert.DeserializeObject<List<Pokemon>>(listadoJson);
                 connection.closeConnection();
             }
             catch (Exception e)
             {
-                Console.Write(e);
+                throw;
             }
             return this.listado;
         }
-        public async Task<Persona> getPersona(int id)
+        public async Task<Pokemon> getPersona(int id)
         {
             Connection cx = new Connection();
-            Persona p =null;
+            Pokemon p =null;
             HttpClient httpClient = new HttpClient();
             try
             {
-                string personaJson = await httpClient.GetStringAsync(new Uri(cx.uri + "api/persona/" + id));
+                string personaJson = await httpClient.GetStringAsync(new Uri(cx.uri + "api/Pokemon/" + id));
                 httpClient.Dispose();
-                p= JsonConvert.DeserializeObject<Persona>(personaJson);
+                p= JsonConvert.DeserializeObject<Pokemon>(personaJson);
                 cx.closeConnection();
             }
             catch (Exception)
@@ -58,7 +58,7 @@ namespace _17_CRUD_Personas_UWP_DAL
             return p;
         }
 
-        public async Task<HttpStatusCode> updatePersona(Persona p)
+        public async Task<HttpStatusCode> updatePersona(Pokemon p)
         {
             Connection cx = new Connection();
             HttpClient httpClient = new HttpClient();
@@ -69,7 +69,7 @@ namespace _17_CRUD_Personas_UWP_DAL
             {
                 string body = JsonConvert.SerializeObject(p);
                 contenido = new HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
-                response = await httpClient.PutAsync(new Uri(cx.uri + "api/persona/" + p.idPersona), contenido);
+                response = await httpClient.PutAsync(new Uri(cx.uri + "api/Pokemon/" + p.idPokemon), contenido);
                 code = response.StatusCode;
                 cx.closeConnection();
             }
@@ -87,7 +87,7 @@ namespace _17_CRUD_Personas_UWP_DAL
             HttpClient httpClient = new HttpClient();
             try
             {
-                response=await httpClient.DeleteAsync(new Uri(cx.uri+"api/persona/"+id));
+                response=await httpClient.DeleteAsync(new Uri(cx.uri+"api/Pokemon/"+id));
                 responseCode = response.StatusCode;
                 cx.closeConnection();
             }
@@ -97,7 +97,7 @@ namespace _17_CRUD_Personas_UWP_DAL
             }
             return responseCode;
         }
-        public async Task<HttpStatusCode> insertPersona(Persona p)
+        public async Task<HttpStatusCode> insertPersona(Pokemon p)
         {
             Connection cx = new Connection();
             HttpStatusCode responseCode = new HttpStatusCode();
@@ -109,7 +109,7 @@ namespace _17_CRUD_Personas_UWP_DAL
 
                 string personaString = JsonConvert.SerializeObject(p);
                 contenido = new HttpStringContent(personaString,Windows.Storage.Streams.UnicodeEncoding.Utf8,"application/json");
-                response =await httpClient.PostAsync(new Uri(cx.uri + "api/persona"),contenido);
+                response =await httpClient.PostAsync(new Uri(cx.uri + "api/Pokemon"),contenido);
                 responseCode = response.StatusCode;
                 cx.closeConnection();
             }

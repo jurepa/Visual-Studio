@@ -11,10 +11,10 @@ namespace _17_CRUD_Personas_UWP_BL
 {
     public class ListadoPersonasBL
     {
-        public async Task<List<Persona>> getListadoBL()
+        public async Task<List<Pokemon>> getListadoBL()
         {
             ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
-            List<Persona> listadoParaUI = null;
+            List<Pokemon> listadoParaUI = null;
             try
             {
                 listadoParaUI = await listadoPersonas.getPersonas();
@@ -26,16 +26,16 @@ namespace _17_CRUD_Personas_UWP_BL
             
             return listadoParaUI;
         }
-        public async Task<Persona> getPersona(int id)
+        public async Task<Pokemon> getPersona(int id)
         {
             ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
 
-            Persona personaUI =await listadoPersonas.getPersona(id);
+            Pokemon personaUI =await listadoPersonas.getPersona(id);
 
             return personaUI;
         }
 
-        public async Task<HttpStatusCode> updatePersona(Persona p)
+        public async Task<HttpStatusCode> updatePersona(Pokemon p)
         {
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
             HttpStatusCode code=await listado.updatePersona(p);
@@ -48,7 +48,7 @@ namespace _17_CRUD_Personas_UWP_BL
             responseCode=await listado.deletePersona(id);
             return responseCode;
         }
-        public async Task<HttpStatusCode> insertPersona(Persona p)
+        public async Task<HttpStatusCode> insertPersona(Pokemon p)
         {
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
             HttpStatusCode responseCode=await listado.insertPersona(p);

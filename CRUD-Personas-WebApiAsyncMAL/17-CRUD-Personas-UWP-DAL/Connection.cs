@@ -40,7 +40,7 @@ namespace _17_CRUD_Personas_UWP_DAL
             //this.user = "pruebaResident";
             this.pass = "Jatabo29";
             this.conexion = new SqlConnection();
-            this.uri =new Uri("http://crud-personas-ui20171127012114.azurewebsites.net/"); //ESTO ES LO Q ESTA MAL, TENDRIA QUE TENER UNA API DE PERSONAS
+            this.uri =new Uri("https://bestpokemonapi.azurewebsites.net/"); //ESTO ES LO Q ESTA MAL, TENDRIA QUE TENER UNA API DE PERSONAS
             try
             {
                 //connection.ConnectionString = "Data Source=" & My.Computer.Name & "Initial Catalog=" & _database & ";uid=" & _user & ";pwd=" & _user & ";"

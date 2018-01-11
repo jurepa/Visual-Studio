@@ -49,12 +49,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer x:Name="scrollViewer" Grid.ColumnSpan="2">
-            <ListView Name="lista"  BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding personaSeleccionada,Mode=TwoWay}" ItemsSource="{Binding listadoAux}">
+            <ListView Name="lista"  BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding pokemonSeleccionado,Mode=TwoWay}" ItemsSource="{Binding listadoAux}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock TextWrapping="Wrap" Text="{Binding nombre}" Margin="0 0 10 0"/>
-                            <TextBlock TextWrapping="Wrap" Text="{Binding apellidos}"/>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding nombrePokemon}" Margin="0 0 10 0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -86,15 +85,14 @@
                 <ProgressRing Name="progressRing" Foreground="Beige" MinWidth="50" MinHeight="50" IsActive="{Binding activo,Mode=TwoWay}"></ProgressRing>
             </StackPanel>
             <TextBlock Text="Nombre: " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
-            <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.nombre,Mode=TwoWay}"/>
-            <TextBlock Text="Apellidos: " Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
-            <TextBox Name="txtApellidos" Grid.Column="1" Grid.Row="2" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.apellidos,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
-            <TextBlock Text="Telefono: " Grid.Column="0" Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
-            <TextBox Name="txtTelefono" Grid.Column="1" Grid.Row="3" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding personaSeleccionada.telefono,Mode=TwoWay,UpdateSourceTrigger=Explicit}" />
-            <TextBlock Text="Direccion: "  Grid.Column="0" Grid.Row="4"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 20" FontSize="18"/>
-            <ScrollViewer Grid.Column="1" Grid.Row="5" Grid.RowSpan="2">
-                <TextBox Name="txtDireccion"   Margin="20 50 50 50" Text="{Binding personaSeleccionada.direccion,Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
-            </ScrollViewer>
+            <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding pokemonSeleccionado.nombrePokemon,Mode=TwoWay}"/>
+            <TextBlock Text="Habilidad 1: " Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
+            <TextBox Name="txtApellidos" Grid.Column="1" Grid.Row="2" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding pokemonSeleccionado.habilidad1,Mode=TwoWay,UpdateSourceTrigger=Explicit}"/>
+            <TextBlock Text="Habilidad 2: " Grid.Column="0" Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" FontSize="18"/>
+            <TextBox Name="txtTelefono" Grid.Column="1" Grid.Row="3" MaxHeight="50" MaxWidth="300" HorizontalAlignment="Left" Width="300" Text="{Binding pokemonSeleccionado.habilidad2,Mode=TwoWay,UpdateSourceTrigger=Explicit}" />
+            <TextBlock Text="Habitat: "  Grid.Column="0" Grid.Row="4"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 20" FontSize="18"/>
+            <TextBox Name="txtDireccion" Grid.Column="1" Grid.Row="4" MaxHeight="50" Width="300" HorizontalAlignment="Left" VerticalAlignment="Center"   Text="{Binding pokemonSeleccionado.habitat,Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
+
         </Grid>
     </Grid>
 

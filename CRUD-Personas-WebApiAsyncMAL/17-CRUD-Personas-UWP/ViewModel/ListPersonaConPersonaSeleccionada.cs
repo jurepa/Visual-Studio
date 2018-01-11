@@ -16,9 +16,9 @@ namespace _17_CRUD_Personas_UWP.ViewModel
     public class ListPersonaConPersonaSeleccionada : clsVMBase
     {
         #region "Atributos"
-        private ObservableCollection<Persona> _listado;
-        private ObservableCollection<Persona> _listadoAux;
-        private Persona _personaSeleccionada;
+        private ObservableCollection<Pokemon> _listado;
+        private ObservableCollection<Pokemon> _listadoAux;
+        private Pokemon _pokemonSeleccionado;
         private string _textoBusqueda;
         private DelegateCommand _delete;
         private DelegateCommand _addPersona;
@@ -38,6 +38,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             _listadoBL = new ListadoPersonasBL();
             cargarLista();
             this._listadoAux = this._listado;
+            NotifyPropertyChanged("listadoAux");
             timer = new DispatcherTimer();
             _segundos = 30;
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -82,7 +83,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _actualizarLista = value;
             }
         }
-        public ObservableCollection<Persona> listadoAux
+        public ObservableCollection<Pokemon> listadoAux
         {
             get
             {
@@ -166,7 +167,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _textoReloj = value;
             }
         }
-        public ObservableCollection<Persona> listado
+        public ObservableCollection<Pokemon> listado
         {
             get { return _listado; }
 
@@ -175,26 +176,26 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _listado = value;
             }
         }
-        public Persona personaSeleccionada
+        public Pokemon pokemonSeleccionado
         {
-            get { return _personaSeleccionada; }
+            get { return _pokemonSeleccionado; }
             set
             {
-                _personaSeleccionada = value;
+                _pokemonSeleccionado = value;
                 _delete.RaiseCanExecuteChanged();
                 _savePersona.RaiseCanExecuteChanged();
 
                 //Notificación de cambio a la vista
-                NotifyPropertyChanged("personaSeleccionada");
+                NotifyPropertyChanged("pokemonSeleccionado");
             }
         }
         #endregion
         public bool CanExecuteDelete()
         {
             bool canExecute = false;
-            if (_personaSeleccionada != null)
+            if (_pokemonSeleccionado != null)
             {
-                if (!String.IsNullOrEmpty(_personaSeleccionada.nombre))
+                if (!String.IsNullOrEmpty(_pokemonSeleccionado.nombrePokemon))
                 {
                     canExecute = true;
                 }
@@ -214,7 +215,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         public void ExecuteSearchPersona()
         {
-            listadoAux = new ObservableCollection<Persona>();
+            listadoAux = new ObservableCollection<Pokemon>();
             NotifyPropertyChanged("listadoAux");
             //string nombre = null;
             //for (int i = 0; i < _listado.Count; i++)
@@ -226,9 +227,9 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             //        NotifyPropertyChanged("listadoAux");
             //    }
             //}
-            IEnumerable<Persona> listadito = from persona in _listado where persona.nombre.ToLower().Contains(_textoBusqueda.ToLower())||persona.apellidos.ToLower().Contains(_textoBusqueda.ToLower()) select persona;
+            IEnumerable<Pokemon> listadito = from persona in _listado where persona.nombrePokemon.ToLower().Contains(_textoBusqueda.ToLower()) select persona;
 
-            listadoAux =new ObservableCollection<Persona>( listadito);
+            listadoAux =new ObservableCollection<Pokemon>( listadito);
             NotifyPropertyChanged("listadoAux");
         }
         public bool CanExecuteSearchPersona()
@@ -251,13 +252,13 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         public void ExecuteAddPersona()
         {
-            personaSeleccionada = new Persona();
-            NotifyPropertyChanged("personaSeleccionada");
+            pokemonSeleccionado = new Pokemon();
+            NotifyPropertyChanged("pokemonSeleccionado");
         }
         //private bool canExecuteSavePersona()
         //{
         //    bool sePuede = false;
-        //    if (_personaSeleccionada != null)
+        //    if (_pokemonSeleccionado != null)
         //    {
         //        sePuede = true;
 
@@ -271,11 +272,11 @@ namespace _17_CRUD_Personas_UWP.ViewModel
 
         private async void update()
         {
-            if (_personaSeleccionada.idPersona == 0)
+            if (_pokemonSeleccionado.idPokemon == 0)
             {
-                _personaSeleccionada.idPersona = listadoAux.ElementAt(listado.Count - 1).idPersona + 1;
+                _pokemonSeleccionado.idPokemon = listadoAux.ElementAt(listado.Count - 1).idPokemon + 1;
 
-                await _listadoBL.insertPersona(_personaSeleccionada); 
+                await _listadoBL.insertPersona(_pokemonSeleccionado); 
                 cargarLista();
                 _listadoAux = listado;
                 //NotifyPropertyChanged("personaSeleccionada");
@@ -284,11 +285,11 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             }
             else
             {
-                await _listadoBL.updatePersona(_personaSeleccionada);
+                await _listadoBL.updatePersona(_pokemonSeleccionado);
                 activo = true;
                 cargarLista();
                 _listadoAux = listado;
-                NotifyPropertyChanged("personaSeleccionada");
+                NotifyPropertyChanged("pokemonSeleccionado");
                 //NotifyPropertyChanged("listadoAux");
                 //NotifyPropertyChanged("listado");
             }
@@ -296,7 +297,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private bool CanExecuteSavePersona()
         {
             bool sePuede = false;
-            if (_personaSeleccionada != null)
+            if (_pokemonSeleccionado != null)
             {
                 sePuede = true;
             }
@@ -304,12 +305,12 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         private void buscaPersona()
         {
-            _listadoAux = new ObservableCollection<Persona>();
+            _listadoAux = new ObservableCollection<Pokemon>();
             NotifyPropertyChanged("listadoAux");
             string nombre = null;
             for (int i = 0; i < _listado.Count; i++)
             {
-                nombre = _listado.ElementAt(i).nombre.ToLower();
+                nombre = _listado.ElementAt(i).nombrePokemon.ToLower();
                 if (nombre.Contains(_textoBusqueda.ToLower()))
                 {
                     _listadoAux.Add(_listado.ElementAt(i));
@@ -323,13 +324,13 @@ namespace _17_CRUD_Personas_UWP.ViewModel
 
             ContentDialog volverAJugar = new ContentDialog();
             volverAJugar.Title = "Eliminar";
-            volverAJugar.Content = $"¿Está seguro de que de que desea eliminar el usuario {_personaSeleccionada.nombre} {_personaSeleccionada.apellidos}?";
+            volverAJugar.Content = $"¿Está seguro de que de que desea eliminar el pokemon {_pokemonSeleccionado.nombrePokemon}?";
             volverAJugar.PrimaryButtonText = "Si";
             volverAJugar.SecondaryButtonText = "No";
             ContentDialogResult resultado = await volverAJugar.ShowAsync();
             if (resultado == ContentDialogResult.Primary)
             {
-                await _listadoBL.deletePersona(_personaSeleccionada.idPersona);
+                await _listadoBL.deletePersona(_pokemonSeleccionado.idPokemon);
                 activo = true;
                 cargarLista();
                 _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
@@ -368,7 +369,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         private async void cargarLista()
         {
-            this._listado = new ObservableCollection<Persona>(await _listadoBL.getListadoBL());
+            this._listado = new ObservableCollection<Pokemon>(await _listadoBL.getListadoBL());
             NotifyPropertyChanged("listado");
             activo = false;
         }
