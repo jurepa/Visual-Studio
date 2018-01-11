@@ -266,10 +266,16 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         //}
         private void ExecuteSavePersona()
         {
+            update();
+        }
+
+        private async void update()
+        {
             if (_personaSeleccionada.idPersona == 0)
             {
                 _personaSeleccionada.idPersona = listadoAux.ElementAt(listado.Count - 1).idPersona + 1;
-                _listadoBL.insertPersona(_personaSeleccionada);
+
+                await _listadoBL.insertPersona(_personaSeleccionada); 
                 cargarLista();
                 _listadoAux = listado;
                 //NotifyPropertyChanged("personaSeleccionada");
@@ -278,7 +284,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             }
             else
             {
-                _listadoBL.updatePersona(_personaSeleccionada);
+                await _listadoBL.updatePersona(_personaSeleccionada);
                 activo = true;
                 cargarLista();
                 _listadoAux = listado;
@@ -323,7 +329,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             ContentDialogResult resultado = await volverAJugar.ShowAsync();
             if (resultado == ContentDialogResult.Primary)
             {
-                _listadoBL.deletePersona(_personaSeleccionada.idPersona);
+                await _listadoBL.deletePersona(_personaSeleccionada.idPersona);
                 activo = true;
                 cargarLista();
                 _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why

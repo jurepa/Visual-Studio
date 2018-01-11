@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Windows.Web.Http;
 
 namespace _17_CRUD_Personas_UWP_BL
 {
@@ -14,33 +14,45 @@ namespace _17_CRUD_Personas_UWP_BL
         public async Task<List<Persona>> getListadoBL()
         {
             ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
-            List<Persona> listadoParaUI = await listadoPersonas.getPersonas();
+            List<Persona> listadoParaUI = null;
+            try
+            {
+                listadoParaUI = await listadoPersonas.getPersonas();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             
             return listadoParaUI;
         }
-        public Persona getPersona(int id)
+        public async Task<Persona> getPersona(int id)
         {
             ListadoPersonasDAL listadoPersonas = new ListadoPersonasDAL();
 
-            Persona personaUI =listadoPersonas.getPersona(id);
+            Persona personaUI =await listadoPersonas.getPersona(id);
 
             return personaUI;
         }
 
-        public void updatePersona(Persona p)
+        public async Task<HttpStatusCode> updatePersona(Persona p)
         {
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
-            listado.updatePersona(p);
+            HttpStatusCode code=await listado.updatePersona(p);
+            return code;
         }
-        public void deletePersona(int id)
+        public async Task<HttpStatusCode> deletePersona(int id)
         {
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
-            listado.deletePersona(id);
+            HttpStatusCode responseCode = new HttpStatusCode();
+            responseCode=await listado.deletePersona(id);
+            return responseCode;
         }
-        public void insertPersona(Persona p)
+        public async Task<HttpStatusCode> insertPersona(Persona p)
         {
             ListadoPersonasDAL listado = new ListadoPersonasDAL();
-            listado.insertPersona(p);
+            HttpStatusCode responseCode=await listado.insertPersona(p);
+            return responseCode;
         }
     }
 }

@@ -30,6 +30,7 @@ namespace _17_CRUD_Personas_UWP_DAL
 
                 httpClient.Dispose();
                 this.listado = JsonConvert.DeserializeObject<List<Persona>>(listadoJson);
+                connection.closeConnection();
             }
             catch (Exception e)
             {
@@ -37,38 +38,19 @@ namespace _17_CRUD_Personas_UWP_DAL
             }
             return this.listado;
         }
-        public Persona getPersona(int id)
+        public async Task<Persona> getPersona(int id)
         {
             Connection cx = new Connection();
-            SqlDataReader lector;
             Persona p =null;
-            SqlCommand consulta = new SqlCommand();
-            SqlParameter idParam=new SqlParameter();
+            HttpClient httpClient = new HttpClient();
             try
             {
-                idParam.ParameterName = "@id";
-                idParam.SqlDbType = System.Data.SqlDbType.Int;
-                idParam.Value = id;
-                consulta.Parameters.Add(idParam);
-                consulta.CommandText = "Select*From Personas where id=@id";
-                consulta.Connection = cx.conexion;
-                lector = consulta.ExecuteReader();
-
-                if (lector.HasRows)
-                {
-                        lector.Read();
-                        p = new Persona();
-                        p.idPersona = (int)lector["ID"];
-                        p.nombre = (string)lector["nombre"];
-                        p.apellidos = (string)lector["apellidos"];
-                        p.direccion = (string)lector["direccion"];
-                        p.telefono = (string)lector["telefono"];
-                        p.idDepartamento = (int)lector["ID_Departamento"];
-
-                }
+                string personaJson = await httpClient.GetStringAsync(new Uri(cx.uri + "api/persona/" + id));
+                httpClient.Dispose();
+                p= JsonConvert.DeserializeObject<Persona>(personaJson);
                 cx.closeConnection();
             }
-            catch (SqlException)
+            catch (Exception)
             {
                 throw;
             }
@@ -76,123 +58,66 @@ namespace _17_CRUD_Personas_UWP_DAL
             return p;
         }
 
-        public void updatePersona(Persona p)
+        public async Task<HttpStatusCode> updatePersona(Persona p)
         {
             Connection cx = new Connection();
-            SqlCommand consulta = new SqlCommand();
-            SqlParameter nombre = new SqlParameter() ;
-            SqlParameter apellidos = new SqlParameter();
-            SqlParameter id = new SqlParameter();
-            SqlParameter idDepartamento = new SqlParameter();
-            SqlParameter direccion = new SqlParameter();
-            SqlParameter telefono = new SqlParameter();
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = new HttpResponseMessage();
+            HttpStringContent contenido = null;
+            HttpStatusCode code = new HttpStatusCode();
             try
             {
-                nombre.ParameterName = "@nombre";
-                nombre.SqlDbType = System.Data.SqlDbType.NVarChar;
-                nombre.Value = p.nombre;
-
-                idDepartamento.ParameterName = "@idDepartamento";
-                idDepartamento.SqlDbType = System.Data.SqlDbType.Int;
-                idDepartamento.Value = p.idDepartamento;
-
-                apellidos.ParameterName = "@apellidos";
-                apellidos.SqlDbType = System.Data.SqlDbType.NVarChar;
-                apellidos.Value = p.apellidos;
-
-                direccion.ParameterName = "@direccion";
-                direccion.SqlDbType = System.Data.SqlDbType.NVarChar;
-                direccion.Value = p.direccion;
-
-                telefono.ParameterName = "@telefono";
-                telefono.SqlDbType = System.Data.SqlDbType.Char;
-                telefono.Value = p.telefono;
-
-                id.ParameterName = "@id";
-                id.SqlDbType = System.Data.SqlDbType.Int;
-                id.Value = p.idPersona;
-
-                consulta.Parameters.Add(nombre);
-                consulta.Parameters.Add(apellidos);
-                consulta.Parameters.Add(direccion);
-                consulta.Parameters.Add(telefono);
-                consulta.Parameters.Add(id);
-                consulta.Parameters.Add(idDepartamento);
-                consulta.CommandText = "Update Personas Set Nombre=@nombre, Apellidos=@apellidos, Direccion=@direccion, Telefono=@telefono, ID_Departamento=@idDepartamento WHERE ID=@id";
-                consulta.Connection = cx.conexion;
-                consulta.ExecuteNonQuery();
+                string body = JsonConvert.SerializeObject(p);
+                contenido = new HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
+                response = await httpClient.PutAsync(new Uri(cx.uri + "api/persona/" + p.idPersona), contenido);
+                code = response.StatusCode;
                 cx.closeConnection();
             }
             catch (SqlException e)
             {
                 throw;
             }
+            return code;
         }
-        public void deletePersona(int id)
+        public async Task<HttpStatusCode> deletePersona(int id)
         {
             Connection cx = new Connection();
-            SqlCommand consulta = new SqlCommand();
-
-            SqlParameter idParam = new SqlParameter();
-
+            HttpStatusCode responseCode = new HttpStatusCode();
+            HttpResponseMessage response = new HttpResponseMessage();
+            HttpClient httpClient = new HttpClient();
             try
             {
-
-
-                idParam.ParameterName = "@id";
-                idParam.SqlDbType = System.Data.SqlDbType.Int;
-                idParam.Value = id;
-                consulta.Parameters.Add(idParam);
-                consulta.CommandText = "DELETE FROM PERSONAS WHERE ID=@id ";
-                consulta.Connection = cx.conexion;
-                consulta.ExecuteNonQuery();
+                response=await httpClient.DeleteAsync(new Uri(cx.uri+"api/persona/"+id));
+                responseCode = response.StatusCode;
                 cx.closeConnection();
             }
-            catch (SqlException)
+            catch (Exception)
             {
                 throw;
             }
+            return responseCode;
         }
-        public void insertPersona(Persona p)
+        public async Task<HttpStatusCode> insertPersona(Persona p)
         {
             Connection cx = new Connection();
-            SqlCommand consulta = new SqlCommand();
-            SqlParameter nombre = new SqlParameter();
-            SqlParameter apellidos = new SqlParameter();
-            SqlParameter direccion = new SqlParameter();
-            SqlParameter telefono = new SqlParameter();
+            HttpStatusCode responseCode = new HttpStatusCode();
+            HttpResponseMessage response = new HttpResponseMessage();
+            HttpClient httpClient = new HttpClient();
+            HttpStringContent contenido = null;
             try
             {
-                nombre.ParameterName = "@nombre";
-                nombre.SqlDbType = System.Data.SqlDbType.NVarChar;
-                nombre.Value = p.nombre;
 
-                apellidos.ParameterName = "@apellidos";
-                apellidos.SqlDbType = System.Data.SqlDbType.NVarChar;
-                apellidos.Value = p.apellidos;
-
-                direccion.ParameterName = "@direccion";
-                direccion.SqlDbType = System.Data.SqlDbType.NVarChar;
-                direccion.Value = p.direccion;
-
-                telefono.ParameterName = "@telefono";
-                telefono.SqlDbType = System.Data.SqlDbType.Char;
-                telefono.Value = p.telefono;
-
-
-                consulta.Parameters.Add(nombre);
-                consulta.Parameters.Add(apellidos);
-                consulta.Parameters.Add(direccion);
-                consulta.Parameters.Add(telefono);
-                consulta.CommandText = "INSERT INTO PERSONAS (Nombre,Apellidos,Direccion,Telefono) VALUES (@nombre,@apellidos,@direccion,@telefono)";
-                consulta.Connection = cx.conexion;
-                consulta.ExecuteNonQuery();
+                string personaString = JsonConvert.SerializeObject(p);
+                contenido = new HttpStringContent(personaString,Windows.Storage.Streams.UnicodeEncoding.Utf8,"application/json");
+                response =await httpClient.PostAsync(new Uri(cx.uri + "api/persona"),contenido);
+                responseCode = response.StatusCode;
                 cx.closeConnection();
             }
-            catch (SqlException)
+            catch (Exception)
             {
                 throw;
             }
+            return responseCode;
         }
     }
 }
