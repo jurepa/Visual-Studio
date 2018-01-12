@@ -37,8 +37,6 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             activo = true;
             _listadoBL = new ListadoPersonasBL();
             cargarLista();
-            this._listadoAux = this._listado;
-            NotifyPropertyChanged("listadoAux");
             timer = new DispatcherTimer();
             _segundos = 30;
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -208,9 +206,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         {
             activo = true;
             cargarLista();
-            listadoAux = this._listado;
             NotifyPropertyChanged("listado");
-            NotifyPropertyChanged("listadoAux");
             _segundos = 30;
         }
         public void ExecuteSearchPersona()
@@ -278,7 +274,6 @@ namespace _17_CRUD_Personas_UWP.ViewModel
 
                 await _listadoBL.insertPersona(_pokemonSeleccionado); 
                 cargarLista();
-                _listadoAux = listado;
                 //NotifyPropertyChanged("personaSeleccionada");
                 //NotifyPropertyChanged("listadoAux");
                 //NotifyPropertyChanged("listado");
@@ -288,7 +283,6 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 await _listadoBL.updatePersona(_pokemonSeleccionado);
                 activo = true;
                 cargarLista();
-                _listadoAux = listado;
                 NotifyPropertyChanged("pokemonSeleccionado");
                 //NotifyPropertyChanged("listadoAux");
                 //NotifyPropertyChanged("listado");
@@ -332,8 +326,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             {
                 await _listadoBL.deletePersona(_pokemonSeleccionado.idPokemon);
                 activo = true;
-                cargarLista();
-                _listadoAux = listado; //No borra la persona seleccionada en el listado original, dnt know why
+                cargarLista(); //No borra la persona seleccionada en el listado original, dnt know why
                 //NotifyPropertyChanged("listado");
                 //NotifyPropertyChanged("listadoAux");
             }
@@ -357,9 +350,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 _listadoBL = new ListadoPersonasBL();
                 activo = true;
                 cargarLista();
-                this._listadoAux = this._listado;
                 NotifyPropertyChanged("listado");
-                NotifyPropertyChanged("listadoAux");
                 if (!String.IsNullOrEmpty(_textoBusqueda))
                 {
                     ExecuteSearchPersona();
@@ -371,6 +362,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         {
             this._listado = new ObservableCollection<Pokemon>(await _listadoBL.getListadoBL());
             NotifyPropertyChanged("listado");
+            this._listadoAux = this._listado;
+            NotifyPropertyChanged("listadoAux");
             activo = false;
         }
     }
