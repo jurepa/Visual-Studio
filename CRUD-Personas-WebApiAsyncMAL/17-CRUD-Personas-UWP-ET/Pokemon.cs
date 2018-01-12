@@ -9,6 +9,19 @@ namespace _17_CRUD_Personas_UWP_ET
 {
     public class Pokemon
     {
+        public Pokemon()
+        {
+            idPokemon = 0;
+            nombrePokemon = "";
+            numEvoluciones = 0;
+            generacion = 1;
+            habilidad1 = "Default";
+            habilidad2 = "";
+            habilidadOculta = "";
+            altura = 2.5;
+            peso = 50.5;
+            habitat = "Default";
+        }
         public int idPokemon { get; set; }
         [Required(ErrorMessage ="Campo requerido")]
         public string nombrePokemon { get; set; }

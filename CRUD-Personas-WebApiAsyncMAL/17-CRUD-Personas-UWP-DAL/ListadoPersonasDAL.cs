@@ -109,7 +109,7 @@ namespace _17_CRUD_Personas_UWP_DAL
 
                 string personaString = JsonConvert.SerializeObject(p);
                 contenido = new HttpStringContent(personaString,Windows.Storage.Streams.UnicodeEncoding.Utf8,"application/json");
-                response =await httpClient.PostAsync(new Uri(cx.uri + "api/Pokemon"),contenido);
+                response =await httpClient.PostAsync(new Uri(cx.uri + "api/Pokemon/"),contenido);
                 responseCode = response.StatusCode;
                 cx.closeConnection();
             }

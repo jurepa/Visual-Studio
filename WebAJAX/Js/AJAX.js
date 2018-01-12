@@ -47,11 +47,13 @@ function MuestraXML()
             var tr = document.createElement("tr");
             var tdNombre = document.createElement("td");
             var tdApellido = document.createElement("td");
+            var td1 = document.createElement("td");
             tdNombre.innerHTML = "Nombres";
             tdApellido.innerHTML = "Apellidos";
             tr.appendChild(tdNombre);
             tr.appendChild(tdApellido);
             table.appendChild(tr);
+            
             //setAttributes border
             
             var misDatosXML = miPeticion.responseXML;
@@ -60,16 +62,16 @@ function MuestraXML()
             for (var i = 0; i < arrayPersonas.length; i++)
             {
                 var persona = arrayPersonas[i];
-                var fila=table.insertRow(i);
-                for (var j = 1; j <= persona.childElementCount; j++)
+                var fila = table.insertRow(i);
+                for (var j = 0; j < persona.childNodes.length; j++)
                 {
-                    var td1 = document.createElement("td");
-                    if (persona.childNodes[j].firstChild.nodeType == 1)
-                    {
-                        j++;
-                        td1.innerHTML = persona.childNodes[j].firstChild.nodeValue;
-                    }
-                    fila.appendChild(td1);
+
+                        if (persona.childNodes[j].nodeType === 1)
+                        {
+                            var td1 = document.createElement("td");
+                            td1.innerHTML = persona.childNodes[j].nodeValue;
+                            table.appendChild(td1);
+                        }                   
                 }
                 //var td1 = document.createElement("td");
                 //td1.innerHTML = persona.getElementsByTagName("nombre")[0].firstChild.nodeValue;
