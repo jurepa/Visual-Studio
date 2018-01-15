@@ -29,6 +29,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private DispatcherTimer timer;
         private int _segundos;
         private bool _activo;
+        private int _indiceSeleccionado;
         //private DelegateCommand _searchPersona;
         #endregion
         #region "Constructores"
@@ -54,6 +55,15 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                     _activo = value;
                     NotifyPropertyChanged("activo");
                 }
+        }
+        public int indiceSeleccionado
+        {
+            get { return _indiceSeleccionado; }
+            set
+            {
+                    _indiceSeleccionado = value;
+                NotifyPropertyChanged("indiceSeleccionado");
+            }
         }
         public DelegateCommand delete
         {
@@ -205,6 +215,11 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private void ExecuteActualizarLista()
         {
             activo = true;
+            if (_pokemonSeleccionado != null)
+            {
+                _indiceSeleccionado = _listadoAux.IndexOf(_pokemonSeleccionado);
+                NotifyPropertyChanged("indiceSeleccionado");
+            }
             cargarLista();
             NotifyPropertyChanged("listado");
             _segundos = 30;
@@ -315,7 +330,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         }
         public async void mostrarSeguroDelete()
         {
-
+            timer.Stop();
             ContentDialog volverAJugar = new ContentDialog();
             volverAJugar.Title = "Eliminar";
             volverAJugar.Content = $"¿Está seguro de que de que desea eliminar el pokemon {_pokemonSeleccionado.nombrePokemon}?";
@@ -326,7 +341,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
             {
                 await _listadoBL.deletePersona(_pokemonSeleccionado.idPokemon);
                 activo = true;
-                cargarLista(); //No borra la persona seleccionada en el listado original, dnt know why
+                cargarLista();
+                timer.Start();//No borra la persona seleccionada en el listado original, dnt know why
                 //NotifyPropertyChanged("listado");
                 //NotifyPropertyChanged("listadoAux");
             }
@@ -361,6 +377,8 @@ namespace _17_CRUD_Personas_UWP.ViewModel
         private async void cargarLista()
         {
             this._listado = new ObservableCollection<Pokemon>(await _listadoBL.getListadoBL());
+            _pokemonSeleccionado = _listado.ElementAt(_indiceSeleccionado);
+            NotifyPropertyChanged("pokemonSeleccionado");
             NotifyPropertyChanged("listado");
             this._listadoAux = this._listado;
             NotifyPropertyChanged("listadoAux");

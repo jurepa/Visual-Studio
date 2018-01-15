@@ -48,8 +48,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer x:Name="scrollViewer" Grid.ColumnSpan="2">
-            <ListView Name="lista"  BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding pokemonSeleccionado,Mode=TwoWay}" ItemsSource="{Binding listadoAux}">
+        <ScrollViewer x:Name="scrollViewer">
+            <ListView Name="lista"  BorderBrush="Black" BorderThickness="2" SelectedItem="{Binding pokemonSeleccionado,Mode=TwoWay}" ItemsSource="{Binding listadoAux}" SelectedIndex="{Binding indiceSeleccionado,Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
