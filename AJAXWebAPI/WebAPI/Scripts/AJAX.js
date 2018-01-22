@@ -14,17 +14,17 @@ function borrarPokemon()
 
         document.getElementById("textoError").innerHTML = "<span style='color: red;'>Pon algún id pls</span>";
     }
-    else if (comprobarSiExiste() == false) {
+    /*else if (comprobarSiExiste() == false) { //El método realiza un proceso asíncrono, por lo que mientras comprobarSiExiste realiza su funcion, este método sigue progresando aunque no haya respuesta
 
         document.getElementById("textoError").innerHTML = "<span style='color: red;'>No existe un pokemon con ese id</span>";
-    }
+    }*/
     else
     {
         document.getElementById("textoError").innerHTML = "";
         //Aquí borraríamos al pokemon
     }
 }
-function comprobarSiExiste()
+/*function comprobarSiExiste()
 {
     var existe = false;
     var httpRequest = new XMLHttpRequest();
@@ -42,7 +42,7 @@ function comprobarSiExiste()
         }
     }
     httpRequest.send();
-}
+}*/
 function pintarTabla()
 {
     var httpRequest = new XMLHttpRequest();
