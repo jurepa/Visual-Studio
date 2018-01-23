@@ -36,28 +36,28 @@ function comprobarSiExiste() {
     var existe = false;
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", "../api/pokemon/" + document.getElementById("idPokemon").value, false);
-    //httpRequest.onreadystatechange = function () {
-    //    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-    //        if (httpRequest.responseText.length > 4) {
-    //            existe = true;
-    //        }
-    //        else
-    //        {
-    //            existe = false;
-    //        }
-    //        return existe;
-    //    }
-    //}
-    httpRequest.send();
-    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-        if (httpRequest.responseText.length > 4) {
-            existe = true;
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            if (httpRequest.responseText.length > 4) {
+                existe = true;
+            }
+            else
+            {
+                existe = false;
+            }
+            return existe;
         }
-        else {
-            existe = false;
-        }
-        return existe;
     }
+    httpRequest.send();
+    //if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    //    if (httpRequest.responseText.length > 4) {
+    //        existe = true;
+    //    }
+    //    else {
+    //        existe = false;
+    //    }
+    //    return existe;
+    //}
 
 }
 function pintarTabla() {
