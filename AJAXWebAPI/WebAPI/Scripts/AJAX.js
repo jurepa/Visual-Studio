@@ -2,13 +2,21 @@
 
 function inicia() {
     pintarTabla();
-    document.getElementById("borrarPokemon").addEventListener("click", borrarPokemon, false);
+    document.getElementById("borrarPokemon").addEventListener("click", comprobarSiExiste, false);
+    document.getElementById("btnAddPokemon").addEventListener("click",mostrarCampos,false);
     //botones borrar guardar addListener
 
 }
+function mostrarCampos()
+{
+    var divAddPokemon = document.getElementById("addPokemon");
+    var txtNombre = document.createElement("input");
+    txtNombre.type = "text";
+    txtNombre.placeholder="Nombre Pokemon";
+    divAddPokemon.appendChild(txtNombre);
+}
 
-function borrarPokemon() {
-    var existe = comprobarSiExiste();
+function borrarPokemon(existe) {
     if (document.getElementById("idPokemon").value == "" || document.getElementById("idPokemon").value == null || isNaN(document.getElementById("idPokemon").value)) {
 
         document.getElementById("textoError").innerHTML = "<span style='color: red;'>Pon algún id pls</span>";
@@ -45,7 +53,7 @@ function comprobarSiExiste() {
             {
                 existe = false;
             }
-            return existe;
+            borrarPokemon(existe);
         }
     }
     httpRequest.send();
