@@ -9,13 +9,57 @@ function inicia() {
 }
 function mostrarCampos()
 {
+    document.getElementById("btnAddPokemon").setAttribute("disabled", "disabled");
     var divAddPokemon = document.getElementById("addPokemon");
     var txtNombre = document.createElement("input");
+    txtNombre.id = "nombre";
     txtNombre.type = "text";
-    txtNombre.placeholder="Nombre Pokemon";
+    txtNombre.placeholder = "Nombre Pokemon";
+    var txtHabilidad = document.createElement("input");
+    txtHabilidad.id = "habilidad";
+    txtHabilidad.type = "text";
+    txtHabilidad.placeholder = "Habilidad";
+    var txtGeneracion = document.createElement("input");
+    txtGeneracion.id = "generacion";
+    txtGeneracion.type = "number";
+    txtGeneracion.placeholder = "Generacion";
+    var txtHabitat = document.createElement("input");
+    txtHabitat.id="habitat"
+    txtHabitat.type = "text";
+    txtHabitat.placeholder = "Habitat";
+    var btnGuardar = document.createElement("input");
+    btnGuardar.type = "button";
+    btnGuardar.value = "Guardar";
+    btnGuardar.addEventListener("click",insertarPokemon,false);
     divAddPokemon.appendChild(txtNombre);
+    divAddPokemon.appendChild(txtHabilidad);
+    divAddPokemon.appendChild(txtGeneracion);
+    divAddPokemon.appendChild(txtHabitat);
+    divAddPokemon.appendChild(btnGuardar);
 }
+function insertarPokemon()
+{
+    if (document.getElementById("nombre").textContent != "" || document.getElementById("habitat").textContent != ""
+        || document.getElementById("generacion").textContent != "" || document.getElementById("habilidad").textContent!="")
+    {
+        document.getElementById("textoError").innerHTML = "<span style='color: red;'>Rellene todos los campos por favor</span>";
+    }
+    else
+    {
+        document.getElementById("textoError").innerHTML = "";
+    }
+    //var httpRequest = new XMLHttpRequest();
+    
+    //httpRequest.open("POST", "../api/pokemon/");
+    //httpRequest.onreadystatechange = function () {
+    //    if (httpRequest.readyState == 4 && httpRequest.status == 204) {
+    //        alert("Pokemon borrado");
+    //        pintarTabla();
+    //    }
 
+    //}
+    //httpRequest.send();
+}
 function borrarPokemon(existe) {
     if (document.getElementById("idPokemon").value == "" || document.getElementById("idPokemon").value == null || isNaN(document.getElementById("idPokemon").value)) {
 
