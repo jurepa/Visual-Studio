@@ -27,7 +27,6 @@ namespace _17_CRUD_Personas_UWP_DAL
                 //Task<string> stringJson = httpClient.GetStringAsync(connection.uri);
                 //string listadoo = await stringJson;
                 string listadoJson =await httpClient.GetStringAsync(new Uri(connection.uri+"api/pokemon"));
-
                 httpClient.Dispose();
                 this.listado = JsonConvert.DeserializeObject<List<Pokemon>>(listadoJson);
                 connection.closeConnection();

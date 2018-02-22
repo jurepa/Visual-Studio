@@ -371,7 +371,7 @@ namespace _17_CRUD_Personas_UWP.ViewModel
                 {
                     ExecuteSearchPersona();
                 }
-                _segundos = 30;
+                 _segundos = 30;
             }
         }
         private async void cargarLista()
