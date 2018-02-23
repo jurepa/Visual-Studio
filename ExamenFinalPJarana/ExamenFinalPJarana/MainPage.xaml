@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="ExamenFinalPJarana.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExamenFinalPJarana"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ExamenFinalPJarana.ViewModels"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Page.DataContext>
+
+    <Grid Name="GridPadre" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="GridListadosYPuntuacion1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Name="listCombates" Grid.Column="0" ItemsSource="{Binding listadoCombates,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding combateSeleccionado,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding idCombate}" Margin="0 0 10 0"/>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding fechaCombate}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView Name="listLuchadores1" Grid.Column="1" ItemsSource="{Binding listadoLuchadores1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding luchadorSeleccionado1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding idLuchador}" Margin="0 0 10 0"/>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding nombreLuchador}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView Name="listLuchadores2" Grid.Column="2" ItemsSource="{Binding listadoLuchadores2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding luchadorSeleccionado2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding idLuchador}" Margin="0 0 10 0"/>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding nombreLuchador}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <RelativePanel Name="clasificacionCombateLuchador1" Grid.Column="3">
+                <TextBlock Name="nombreLuchador1" Text="{Binding luchadorSeleccionado1.nombreLuchador,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" FontWeight="Bold"/>
+                <TextBox Header="Sangriento: " Name="puntuacionSangriento1" InputScope="Number" Text="{Binding resultadoSangriento1.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="nombreLuchador1" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0 50 0 0"></TextBox>
+                <TextBox Header="Victorioso: " Name="puntuacionVictorioso1" InputScope="Number" Text="{Binding resultadoVictorioso1.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionSangriento1" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                <TextBox Header="Espectacular: " Name="puntuacionEspectacular1" InputScope="Number" Text="{Binding resultadoEspectacular1.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionVictorioso1" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                <Button Content="Aceptar" Name="btnAceptar1" Command="{Binding insertarResultadoLuchador1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionEspectacular1" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0 20 0 0"/>
+            </RelativePanel>
+        </Grid>
+        <Grid Name="GridDetailsYPuntuacion2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Name="GridDetails" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <RelativePanel Name="DetailsLuchador1" Grid.Row="0" DataContext="{Binding luchadorSeleccionado1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <Image Name="fotoCasa" Height="200" Width="200" RelativePanel.AlignVerticalCenterWithPanel="True" Source="{Binding fotoCasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Image>
+                    <Image Name="fotoPerfil" Height="200" Width="200" Source="{Binding fotoPerfil,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.RightOf="fotoCasa" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20 0 0 0"/>
+                    <TextBlock Name="NombreLuchador" Text="{Binding nombreLuchador,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.RightOf="fotoPerfil" Margin="5 50 0 0"/>
+                    <TextBlock Name="CasaLuchador" Text="{Binding nombreCasa,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="NombreLuchador" RelativePanel.AlignLeftWith="NombreLuchador" Margin="5 50 0 0"/>
+                </RelativePanel>
+                <RelativePanel Grid.Row="1" Name="DetailsLuchador2" DataContext="{Binding luchadorSeleccionado2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <Image Name="fotoCasa2" Height="200" Width="200" RelativePanel.AlignVerticalCenterWithPanel="True" Source="{Binding fotoCasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Image>
+                    <Image Name="fotoPerfil2" Height="200" Width="200" Source="{Binding fotoPerfil,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.RightOf="fotoCasa2" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20 0 0 0"/>
+                    <TextBlock Name="NombreLuchador2" Text="{Binding nombreLuchador,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.RightOf="fotoPerfil2" Margin="5 50 0 0"/>
+                    <TextBlock Name="CasaLuchador2" Text="{Binding nombreCasa,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="NombreLuchador2" RelativePanel.AlignLeftWith="NombreLuchador2" Margin="5 50 0 0"/>
+                </RelativePanel>
+            </Grid>
+            <RelativePanel Name="clasificacionCombateLuchador2" Grid.Column="1">
+                <TextBlock Name="nombreLuchador2" Text="{Binding luchadorSeleccionado2.nombreLuchador,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" FontWeight="Bold"/>
+                <TextBox Header="Sangriento: " Name="puntuacionSangriento2" InputScope="Number" Text="{Binding resultadoSangriento2.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="nombreLuchador2" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0 50 0 0"></TextBox>
+                <TextBox Header="Victorioso: " Name="puntuacionVictorioso2" InputScope="Number" Text="{Binding resultadoVictorioso2.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionSangriento2" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                <TextBox Header="Espectacular: " Name="puntuacionEspectacular2" InputScope="Number" Text="{Binding resultadoEspectacular2.puntos,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionVictorioso2" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                <Button Content="Aceptar" Name="btnAceptar2" Command="{Binding insertarResultadoLuchador2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="puntuacionEspectacular2" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0 20 0 0"/>
+            </RelativePanel>
+        </Grid>
+        
+    </Grid>
+</Page>
