@@ -44,6 +44,8 @@ function MuestraXML()
         if (miPeticion.readyState == 4 && miPeticion.status == 200)//Si el servidor llega al readyState 4 y el servidor da el codigo OK
         {
             var table = document.createElement("table");
+            table.border = "1";
+            table.className = "table.greyGridTable";
             var tr = document.createElement("tr");
             var tdNombre = document.createElement("td");
             var tdApellido = document.createElement("td");
@@ -62,16 +64,18 @@ function MuestraXML()
             for (var i = 0; i < arrayPersonas.length; i++)
             {
                 var persona = arrayPersonas[i];
-                var fila = table.insertRow(i);
+                var fila = document.createElement("tr");
                 for (var j = 0; j < persona.childNodes.length; j++)
                 {
+                        //if (persona.childNodes[j].nodeType === 1)
+                        //{
+                    if (j % 2 != 0) {
 
-                        if (persona.childNodes[j].nodeType === 1)
-                        {
-                            var td1 = document.createElement("td");
-                            td1.innerHTML = persona.childNodes[j].nodeValue;
-                            table.appendChild(td1);
-                        }                   
+                        var td2 = document.createElement("td");
+                        td2.innerHTML = persona.childNodes[j].firstChild.nodeValue;
+                        fila.appendChild(td2);
+                        table.appendChild(fila);
+                    }                       //}                   
                 }
                 //var td1 = document.createElement("td");
                 //td1.innerHTML = persona.getElementsByTagName("nombre")[0].firstChild.nodeValue;

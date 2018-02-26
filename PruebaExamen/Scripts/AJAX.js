@@ -24,7 +24,7 @@ function mostrarCampos()
     txtGeneracion.type = "number";
     txtGeneracion.placeholder = "Generacion";
     var txtHabitat = document.createElement("input");
-    txtHabitat.id="habitat"
+    txtHabitat.id = "habitat";
     txtHabitat.type = "text";
     txtHabitat.placeholder = "Habitat";
     var btnGuardar = document.createElement("input");
@@ -39,8 +39,8 @@ function mostrarCampos()
 }
 function insertarPokemon()
 {
-    if (document.getElementById("nombre").value != "" || document.getElementById("habitat").value != ""
-        || document.getElementById("generacion").nodeValue != "" || document.getElementById("habilidad").value != "")
+    if (document.getElementById("nombre").textContent != "" || document.getElementById("habitat").textContent != ""
+        || document.getElementById("generacion").textContent != "" || document.getElementById("habilidad").textContent!="")
     {
         document.getElementById("textoError").innerHTML = "<span style='color: red;'>Rellene todos los campos por favor</span>";
     }
@@ -54,7 +54,7 @@ function insertarPokemon()
         pokemon.habilidad1 = document.getElementById("habilidad").value;
         pokemon.generacion = document.getElementById("generacion").value;
         pokemon.habitat = document.getElementById("habitat").value;
-        httpRequest.open("POST", "../api/pokemon/");
+        httpRequest.open("POST", "http://localhost:51593/api/pokemon/");
         httpRequest.setRequestHeader("Content-Type", "application/json");
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState == 4 && httpRequest.status == 204) {
@@ -79,7 +79,7 @@ function borrarPokemon(existe) {
     else {
         var httpRequest = new XMLHttpRequest();
         document.getElementById("textoError").innerHTML = "";
-        httpRequest.open("DELETE", "../api/pokemon/" + document.getElementById("idPokemon").value);
+        httpRequest.open("DELETE", "http://localhost:51593/api/pokemon/" + document.getElementById("idPokemon").value);
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState == 4 && httpRequest.status == 204) {
                 alert("Pokemon borrado");
@@ -95,7 +95,7 @@ function borrarPokemon(existe) {
 function comprobarSiExiste() {
     var existe = false;
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open("GET", "../api/pokemon/" + document.getElementById("idPokemon").value, false);
+    httpRequest.open("GET", "http://localhost:51593/api/pokemon/" + document.getElementById("idPokemon").value, false);
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {
             if (httpRequest.responseText.length > 4) {
@@ -144,7 +144,7 @@ function pintarTabla() {
     tr.appendChild(thHabitat);
     table.appendChild(tr);
     divListadoPokemon.appendChild(table);
-    httpRequest.open("GET", "../api/pokemon");
+    httpRequest.open("GET", "http://localhost:51593/api/pokemon");
     httpRequest.onreadystatechange = function () {
         //document.getElementById("listadoPokemonJSON").innerHTML = "Cargando.................";
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {

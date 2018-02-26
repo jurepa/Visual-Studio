@@ -278,11 +278,11 @@ namespace WebApi___DAL.Listados
 
                 habilidad2.ParameterName = "@habilidad2";
                 habilidad2.SqlDbType = System.Data.SqlDbType.NVarChar;
-                habilidad2.Value = p.habilidad2;
+                habilidad2.Value = "";
 
                 habilidadOculta.ParameterName = "@habilidadOculta";
                 habilidadOculta.SqlDbType = System.Data.SqlDbType.NVarChar;
-                habilidadOculta.Value = p.habilidadOculta;
+                habilidadOculta.Value = "";
 
                 peso.ParameterName = "@peso";
                 peso.SqlDbType = System.Data.SqlDbType.Float;
